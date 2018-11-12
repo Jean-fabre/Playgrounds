@@ -1,0 +1,37 @@
+<h1> View all players </h1>
+
+<%= form_tag boats_path, method: :get do %>
+
+  <p><%= text_field_tag :first_name,
+    params[:first_name],
+    class: "form-control",
+    placeholder: "First Name"
+  %></p>
+
+   <p><%= text_field_tag :last_name,
+    params[:last_name],
+    class: "form-control",
+    placeholder: "First Name"
+  %></p>
+
+
+<!-- trouver solution pour savoir comment rajouter une recherche par sport et non qu'il y ait 3 recherches différentes à selectionner par sport oui ou non -->
+
+
+ <p><%= select_tag :tennis_level,
+      options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
+      class: "form-control",
+        placeholder: "Level"
+    %></p>
+
+<p><%= select_tag :squash_level,
+      options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
+      class: "form-control",
+        placeholder: "Level"
+    %></p>
+
+    <p><%= select_tag :padel_level,
+      options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
+      class: "form-control",
+        placeholder: "Level"
+    %></p>
