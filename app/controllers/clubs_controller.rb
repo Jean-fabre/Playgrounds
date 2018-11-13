@@ -17,11 +17,18 @@ class ClubsController < ApplicationController
 
   def create
     @club = Club.new(club_params)
+    @club.user = current_user
     if @club.save
       redirect_to root_path
     else
       render :show
     end
+  end
+
+  def update
+    @club = Club.find(params[:id])
+    @club.update(club_params)
+    redirect_to club_path(@club)
   end
 
   def destroy

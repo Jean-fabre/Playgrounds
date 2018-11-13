@@ -4,7 +4,12 @@ class PlayersController < ApplicationController
   end
 
   def show
-    @player = Player.find(params[:id])
+    @player = current_user.player
+    # if @player.nil?
+    #   redirect_to new_user_player_path(current_user)
+    # else
+    #   @player = current_user.player
+    # end
   end
 
   def new
