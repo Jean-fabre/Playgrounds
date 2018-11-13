@@ -4,5 +4,8 @@
     <%= f.input :field_type, collection: ["Tennis", "Squash", "Padel"] %>
     <%= f.input :availability %>
     <%= f.input :price %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <%= f.button :submit, class: "btn btn-primary" %>
+
 <% end %>
