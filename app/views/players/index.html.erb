@@ -1,7 +1,7 @@
 <div class="container">
 <h1> View all players </h1>
 
-<%= form_tag players_path, method: :get do %>
+<%= form_tag user_players_path, method: :get do %>
 
   <p><%= text_field_tag :first_name,
     params[:first_name],
@@ -18,25 +18,25 @@
   <p><%= select_tag :gender,
     options_for_select(["M", "F"]),
     class: "form-control",
-    placeholder: "Select a gender"
+    prompt: "Select a gender"
   %></p>
 
   <p><%= select_tag :tennis_level,
     options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
     class: "form-control",
-    placeholder: "Select a tennis level"
+    prompt: "Select a tennis level"
   %></p>
 
   <p><%= select_tag :squash_level,
     options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
     class: "form-control",
-    placeholder: "Select a squash level"
+    prompt: "Select a squash level"
   %></p>
 
   <p><%= select_tag :padel_level,
     options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
     class: "form-control",
-    placeholder: "Select a padel level"
+    prompt: "Select a padel level"
   %></p>
 
   <p><%= submit_tag 'Search', class: 'btn btn-primary'%></p>
