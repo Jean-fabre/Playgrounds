@@ -1,0 +1,12 @@
+
+<h2>Edit your field</h2>
+
+<%= simple_form_for @field do |f| %>
+  <%= f.input :field_type, collection: ["Tennis", "Squash", "Padel"] %>
+  <%= f.input :availibility %>
+  <%= f.input :price %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+
+<% end %>
+
+
