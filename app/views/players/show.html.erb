@@ -9,12 +9,15 @@
         <li><%= @player.phone_number %></li>
         <li><%= @player.birth_date %></li>
         <li><%= @player.description%></li>
-        <li><%= @player.tennis %></li>
-        <li><%= @player.tennis_level %></li>
-        <li><%= @player.squash %></li>
-        <li><%= @player.squash_level %></li>
-        <li><%= @player.padel %></li>
-        <li><%= @player.padel_level %></li>
+        <% if @player.tennis == true %>
+        <li>Plays tennis with current level :<%= @player.tennis_level %></li>
+        <%end %>
+        <% if @player.squash == true %>
+        <li>Plays squash with current level : <%= @player.squash_level %></li>
+        <%end %>
+        <% if @player.padel == true %>
+        <li>Plays padel with current level : <%= @player.padel_level %></li>
+        <%end %>
       </ul>
     </div>
   </div>
