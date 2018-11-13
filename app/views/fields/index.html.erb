@@ -1,0 +1,30 @@
+<h1> View all fields </h1>
+
+<%= form_tag fields_path, method: :get do %>
+
+  <p><%= select_tag :field_type,
+      options_for_select(["Tennis", "Squash", "Padel"]),
+      class: "form-control",
+        placeholder: "Field type"
+    %></p>
+
+
+   <p><%= text_field_tag :availability,
+    params[:availability],
+    class: "form-control",
+    placeholder: "availability"
+  %></p>
+
+  <p><%= text_field_tag :price,
+    params[:price],
+    class: "form-control",
+    placeholder: "price"
+  %></p>
+
+
+
+
+
+
+
+
