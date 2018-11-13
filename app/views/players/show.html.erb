@@ -4,11 +4,11 @@
 
       <h1>Your profile</h1>
       <ul>
-        <li><%= @player.first_name %></li>
-        <li><%= @player.last_name %></li>
-        <li><%= @player.phone_number %></li>
-        <li><%= @player.birth_date %></li>
-        <li><%= @player.description%></li>
+        <li>First name    : <%= @player.first_name %></li>
+        <li>Last name     :<%= @player.last_name %></li>
+        <li>Phone number  : <%= @player.phone_number %></li>
+        <li>Birth date    :<%= @player.birth_date %></li>
+        <li>Description   :<%= @player.description%></li>
         <% if @player.tennis == true %>
         <li>Plays tennis with current level :<%= @player.tennis_level %></li>
         <%end %>

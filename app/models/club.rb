@@ -5,4 +5,5 @@ class Club < ApplicationRecord
 
   validates :name, presence: true
   validates :address, presence: true
+  mount_uploader :photo, PhotoUploader
 end
