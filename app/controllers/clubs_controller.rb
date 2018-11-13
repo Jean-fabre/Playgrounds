@@ -9,7 +9,7 @@ class ClubsController < ApplicationController
     if params[:adress].present?
       @clubs = @clubs.where("adress ILIKE ?", "%#{params[:adress]}%")
     end
-    
+
     policy_scope(Player)
   end
 
@@ -57,6 +57,6 @@ class ClubsController < ApplicationController
   private
 
   def club_params
-    params.require(:club).permit(:name, :address)
+    params.require(:club).permit(:name, :address, :photo)
   end
 end

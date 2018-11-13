@@ -19,6 +19,7 @@
         <li>Plays padel with current level : <%= @player.padel_level %></li>
         <%end %>
       </ul>
+      <%= cl_image_tag @player.photo, height: 300, width: 400, crop: :fill %>
 
       <% if policy(@player).edit? %>
         <%= link_to "Update", edit_user_player_path(current_user, @player), class: "btn btn-primary" %>
