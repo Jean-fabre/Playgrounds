@@ -1,4 +1,5 @@
 <div class="container">
+
   <h1>CLUBS/SHOW</h1>
 
   <p id="notice"><%= notice %></p>
@@ -24,9 +25,12 @@
   </ul>
 
   <% if policy(@club).edit?  %>
-    <%= link_to "Update", edit_club_path(@club), class: "btn btn-primary" %>  <%= link_to "add infrastructure", new_club_field_path(@club), class: "btn btn-primary" %>
+    <%= link_to "Update", edit_club_path(@club), class: "btn btn-primary" %>  
   <% end %>
   <%= link_to "Back", clubs_path, class: "btn btn-primary" %>
 
+
+    </ul>
+    <%= cl_image_tag @club.photo, height: 300, width: 400, crop: :fill %>
 </div>
 

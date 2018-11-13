@@ -3,6 +3,8 @@
 <%= simple_form_for @club do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
   <%= f.submit "Create Club"%>
 <% end %>
 </div>
