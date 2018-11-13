@@ -53,7 +53,7 @@ class PlayersController < ApplicationController
   end
 
   def edit
-    @player = current_user.player
+    @player = Player.find(params[:id])
     authorize @player
   end
 
