@@ -2,6 +2,15 @@ class FieldsController < ApplicationController
 
   def index
     @fields = Field.all
+     if params[:field_type].present?
+      @fields = @fields.where(field_type: params[:field_type])
+    end
+
+    if params[:price].present?
+      @fields = @fields.where(price: params[:price])
+    end
+
+    if params[:availability]
   end
 
   def new
