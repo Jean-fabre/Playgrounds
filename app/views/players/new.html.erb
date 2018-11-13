@@ -1,3 +1,4 @@
+<div class="container">
  <h1> Please complete your profile : </h1>
 
  <%= simple_form_for [current_user, @player] do |f| %>
@@ -14,6 +15,6 @@
     <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
     <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
     <%= f.button :submit, class: "btn btn-primary" %>
-
     <% end %>
 
+</div>

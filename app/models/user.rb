@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   validates :is_player, presence: true
   has_one :player
-
-
+  has_one :club
+  has_many :reservations
+  has_many :reviews
 end
