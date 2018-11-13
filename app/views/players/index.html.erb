@@ -1,5 +1,5 @@
 <div class="container">
-<h1> View all players </h1>
+<h1> Find a player </h1>
 
 <%= form_tag user_players_path, method: :get do %>
 
@@ -40,5 +40,15 @@
   %></p>
 
   <p><%= submit_tag 'Search', class: 'btn btn-primary'%></p>
+  <p><%= link_to 'Home', root_path, class: "btn btn-primary" %></p>
+<% end %>
 
+
+<% @players.each do |p| %>
+<p><%= p.first_name %></p>
+<p><%= p.last_name %></p>
+<p><%= p.gender %></p>
+<p><%= p.tennis_level %></p>
+<p><%= p.squash_level %></p>
+<p><%= p.padel_name %></p>
 <% end %>

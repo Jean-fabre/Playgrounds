@@ -1,5 +1,23 @@
 <div class="container">
-<h1>CLUBS/INDEX</h1>
+<h1>Find a Club</h1>
+
+<%= form_tag clubs_path, method: :get do %>
+
+  <p><%= text_field_tag :name,
+    params[:name],
+    class: "form-control",
+    placeholder: "Enter a Club name"
+  %></p>
+
+  <p><%= text_field_tag :adress,
+    params[:adress],
+    class: "form-control",
+    placeholder: "Enter an adress"
+  %></p>
+
+  <p><%= submit_tag 'Search', class: 'btn btn-primary'%></p>
+  <p><%= link_to 'Home', root_path, class: "btn btn-primary" %></p>
+<% end %>
 
 <ul>
   <% @clubs.each do |b| %>
