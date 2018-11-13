@@ -1,16 +1,21 @@
 <div class="container">
-<h1>CLUBS/SHOW</h1>
 
-<p id="notice"><%= notice %></p>
 
-<p><strong>About this Club</strong></p>
-  <ul>
-  <strong><%= @club.name %></strong>
-  <li><%= @club.address %></li>
-  </ul>
-  <%= cl_image_tag @article.photo, height: 300, width: 400, crop: :fill %>
-<% if current_user == @club.user %>
-  <p><%= link_to 'edit', edit_club_path(@club) %> | <%= link_to 'destroy', club_path(@club), method: :delete %></p>
-<% end %>
+  <h1>CLUBS/SHOW</h1>
+
+  <p id="notice"><%= notice %></p>
+
+  <p><strong>About this Club</strong></p>
+    <ul>
+    <strong><%= @club.name %></strong>
+    <li><%= @club.address %></li>
+    </ul>
+    <%= cl_image_tag @article.photo, height: 300, width: 400, crop: :fill %>
+  <% if policy(@club).edit?  %>
+    <%= link_to "Update", edit_club_path(@club), class: "btn btn-primary" %>
+  <% end %>
+
+
+
 </div>
 
