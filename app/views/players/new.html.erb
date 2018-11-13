@@ -1,19 +1,24 @@
- <h1> Please complete your profile : </h1>
+ <div class="container">
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
 
- <%= simple_form_for [current_user, @player] do |f| %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :phone_number %>
-    <%= f.input :birth_date %>
-    <%= f.input :description %>
-    <%= f.input :gender, collection: ["Female", "Male"] %>
-    <%= f.input :tennis %>
-    <%= f.input :padel %>
-    <%= f.input :squash %>
-    <%= f.input :tennis_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-    <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-    <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-    <%= f.button :submit, class: "btn btn-primary" %>
+      <h1> Please complete your profile : </h1>
 
-    <% end %>
-
+        <%= simple_form_for [current_user, @player] do |f| %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :phone_number %>
+          <%= f.input :birth_date, collusion: (1920..2018) %>
+          <%= f.input :description %>
+          <%= f.input :gender, collection: ["Female", "Male"] %>
+          <%= f.input :tennis %>
+          <%= f.input :padel %>
+          <%= f.input :squash %>
+          <%= f.input :tennis_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+          <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+          <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+</div>
