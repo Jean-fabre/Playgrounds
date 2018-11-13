@@ -1,1 +1,10 @@
+<div class="container">
 <h1>CLUBS/INDEX</h1>
+
+<ul>
+  <% @clubs.each do |b| %>
+    <li><%= link_to b.name, club_path(b) %></li>
+    <% end %>
+  </li>
+</ul>
+</div>
