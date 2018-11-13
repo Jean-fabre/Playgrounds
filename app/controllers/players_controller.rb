@@ -23,6 +23,10 @@ class PlayersController < ApplicationController
     end
   end
 
+  def new
+    @player = Player.new
+  end
+
   def show
     @player = current_user.player
     # if @player.nil?
@@ -32,8 +36,9 @@ class PlayersController < ApplicationController
     # end
   end
 
-  def new
-    @player = Player.new
+  def edit
+    @player = Player.find(params[:id])
+    @player = current_user.player
   end
 
   def create
@@ -46,12 +51,8 @@ class PlayersController < ApplicationController
     end
   end
 
-  def edit
-    @player = current_user.player
-  end
-
   def update
-    @player = current_user.profile
+    @player = Player.find(params[:id])
     if @player.update(player_params)
       redirect_to root_path
     else
