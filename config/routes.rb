@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     resources :reservation
     resources :player
-    resources :reviews
+
   end
 
   resources :clubs do

@@ -1,1 +1,15 @@
+<div class="container">
 <h1>REVIEWS/INDEX</h1>
+<p>You are on the reviews/index</p>
+
+<h1>reviews</h1>
+<ul>
+  <li><% @reviews.each do |r| %>
+     <% r.rating.times do %>
+      <i class="fas fa-star"></i>
+      <% end %>
+     <p><%= r.comment %></p>
+  <% end %></li>
+
+</ul>
+</div>

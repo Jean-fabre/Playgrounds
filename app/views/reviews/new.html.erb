@@ -1,1 +1,10 @@
+<div class="container">
 <h1>REVIEW/NEW</h1>
+
+<%= simple_form_for [@club, @review] do |f|  %>
+<%= f.error_notification %>
+<%= f.input :rating %>
+<%= f.input :comment %>
+<%= f.submit %>
+<% end %>
+</div>
