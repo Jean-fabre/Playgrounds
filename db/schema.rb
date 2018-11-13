@@ -76,3 +76,4 @@ ActiveRecord::Schema.define(version: 2018_11_12_160514) do
 
   add_foreign_key "players", "users"
 end
+
