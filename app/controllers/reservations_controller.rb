@@ -12,8 +12,6 @@ class ReservationsController < ApplicationController
     @field = Field.find(params[:field_id])
     @reservation = Reservation.new
     @club = Club.find(params[:club_id])
-    # @reservation.user = current_user
-    # @reservation.field = @field
   end
 
   def edit

@@ -20,7 +20,7 @@ class FieldsController < ApplicationController
     @field = Field.new(field_params)
     @club = Club.find(params[:club_id])
     if @field.save!
-      redirect_to root_path
+      redirect_to club_fields_path
     else
       render :show
     end
