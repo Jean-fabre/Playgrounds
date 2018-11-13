@@ -9,6 +9,8 @@ class FieldsController < ApplicationController
     if params[:price].present?
       @fields = @fields.where(price: params[:price])
     end
+
+    if params[:availability]
   end
 
   def new
