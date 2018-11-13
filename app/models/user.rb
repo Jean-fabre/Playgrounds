@@ -4,9 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
-  validates :is_player, presence: true
   has_one :player
-
-
 end
