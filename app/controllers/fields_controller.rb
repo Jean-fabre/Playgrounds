@@ -21,6 +21,7 @@ class FieldsController < ApplicationController
 
     @club = Club.find(params[:club_id])
     @field = @club.fields.build(field_params)
+    raise
     if @field.save
       redirect_to root_path
     else

@@ -1,6 +1,6 @@
 <h1> View all fields </h1>
 
-<%= form_tag fields_path, method: :get do %>
+<%= form_tag club_fields_path, method: :get do %>
 
   <p><%= select_tag :field_type,
       options_for_select(["Tennis", "Squash", "Padel"]),
@@ -21,8 +21,7 @@
     placeholder: "price"
   %></p>
 
-
-
+<% end %>
 
 
 
