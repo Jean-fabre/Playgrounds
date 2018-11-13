@@ -5,13 +5,32 @@
   <p id="notice"><%= notice %></p>
 
   <p><strong>About this Club</strong></p>
-    <ul>
+  <ul>
     <strong><%= @club.name %></strong>
     <li><%= @club.address %></li>
+
+    <% if @club.reviews.count > 0 %>
+      <% a = [] %>
+      <% @club.reviews.each do |r|  %>
+        <%  a << r.rating %>
+      <% end %>
+    <%= link_to club_reviews_path(@club) do %>
+      <li>average rating:</li>
+      <% b = a.inject{ |sum, el| sum + el } / a.size %>
+        <% b.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <% if policy(@club).edit?  %>
+    <%= link_to "Update", edit_club_path(@club), class: "btn btn-primary" %>  
+  <% end %>
+  <%= link_to "Back", clubs_path, class: "btn btn-primary" %>
+
+
     </ul>
     <%= cl_image_tag @club.photo, height: 300, width: 400, crop: :fill %>
-  <% if current_user == @club.user %>
-    <p><%= link_to 'edit', edit_club_path(@club) %> | <%= link_to 'destroy', club_path(@club), method: :delete %></p>
-  <% end %>
 </div>
 

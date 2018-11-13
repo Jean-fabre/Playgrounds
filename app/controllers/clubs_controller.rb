@@ -24,7 +24,6 @@ class ClubsController < ApplicationController
   end
 
   def edit
-
     @club = Club.find(params[:id])
     authorize @club
   end
@@ -34,7 +33,7 @@ class ClubsController < ApplicationController
     authorize @club
     @club.user = current_user
     if @club.save
-      redirect_to root_path
+      redirect_to club_path(@club)
     else
       render :show
     end

@@ -8,15 +8,17 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @club = Club.find(params[:club_id])
     @user = current_user
     @review = Review.new
-    @club = Club.find(params[:club_id])
   end
 
   def create
     @user = current_user
-    @review = Review.new(reviews_params)
     @club = Club.find(params[:club_id])
+    @review = Review.new(reviews_params)
+    @review.club = @club
+    @review.user = @user
     if @review.save
       redirect_to root_path
     else
@@ -31,6 +33,6 @@ class ReviewsController < ApplicationController
   private
 
   def reviews_params
-    params.require(:review).permit(:rating, :comment)
+    params.require(:review).permit(:rating, :comment, :club_id, :user_id)
   end
 end

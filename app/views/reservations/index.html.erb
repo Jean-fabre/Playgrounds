@@ -1,1 +1,13 @@
 <h1>RESERVATIONS/INDEX</h1>
+<div class="container">
+<h1>REVIEWS/INDEX</h1>
+
+<h1>reservations</h1>
+<ul>
+  <li><%= @reservations.each do |r| %>
+     <p><% r.booked_from  %></p>
+     <p><%= r.booked_to %></p>
+      <% end %></li>
+
+</ul>
+</div>

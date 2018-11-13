@@ -1,6 +1,7 @@
 class Field < ApplicationRecord
-  belongs_to :club
+  has_one :club
   has_many :reservations
+
   has_many :availabilities
   has_one :user, through: :club
 
