@@ -25,6 +25,11 @@ class PlayersController < ApplicationController
     policy_scope(Player)
   end
 
+  def new
+    @player = Player.new
+    authorize @player
+  end
+
   def show
     @player = Player.find(params[:id])
     authorize @player
@@ -35,10 +40,6 @@ class PlayersController < ApplicationController
     # end
   end
 
-  def new
-    @player = Player.new
-    authorize @player
-  end
 
   def create
     @player = Player.new(player_params)
