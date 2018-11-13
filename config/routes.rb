@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :club do
+  resources :clubs do
     resources :fields do
       resources :reservations
     end
