@@ -1,5 +1,4 @@
 class FieldsController < ApplicationController
-
   def index
     @fields = Field.all
   end
@@ -18,10 +17,9 @@ class FieldsController < ApplicationController
   end
 
   def create
-
+    @field = Field.new(field_params)
     @club = Club.find(params[:club_id])
-    @field = @club.fields.build(field_params)
-    if @field.save
+    if @field.save!
       redirect_to root_path
     else
       render :show
@@ -35,9 +33,9 @@ class FieldsController < ApplicationController
   end
 
   def destroy
-  @field = Field.find(params[:id])
-  @field.destroy
-  redirect_to root_path
+    @field = Field.find(params[:id])
+    @field.destroy
+    redirect_to root_path
   end
 
   private

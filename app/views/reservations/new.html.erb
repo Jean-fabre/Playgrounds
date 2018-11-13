@@ -2,7 +2,6 @@
   <%= simple_form_for [@field, @reservation] do |f| %>
         <%= f.input :booked_from %>
         <%= f.input :booked_to %>
-        <%= f.input :skipper, collection: ["Skipper", "Own Licence"] %>
 
         <% if current_user.profile.nil? %>
           <%= render "shared/popupprofile" %>
