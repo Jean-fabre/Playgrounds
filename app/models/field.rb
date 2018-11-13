@@ -4,6 +4,6 @@ class Field < ApplicationRecord
   has_many :availabilities
 
   validates :field_type, presence: true
-  validates :availibility, presence: true, inclusion: { in: ["Tennis", "Squash", "Padel"] }
+  validates :availability, presence: true, inclusion: { in: ["Tennis", "Squash", "Padel"] }
   validates :price, presence: true
 end
