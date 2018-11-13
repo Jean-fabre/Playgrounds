@@ -15,6 +15,21 @@ ActiveRecord::Schema.define(version: 2018_11_12_160514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "clubs", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fields", force: :cascade do |t|
+    t.string "field_type"
+    t.string "availability"
+    t.string "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -34,6 +49,18 @@ ActiveRecord::Schema.define(version: 2018_11_12_160514) do
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -42,7 +69,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_160514) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "player"
+    t.boolean "is_player"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
