@@ -8,4 +8,5 @@ class Player < ApplicationRecord
   validates :tennis_level, inclusion: { in: ["Beginner", "Intermediate", "Advanced", "Expert"]}
   validates :squash_level, inclusion: { in: ["Beginner", "Intermediate", "Advanced", "Expert"]}
   validates :padel_level, inclusion: { in: ["Beginner", "Intermediate", "Advanced", "Expert"]}
+  mount_uploader :photo, PhotoUploader
 end
