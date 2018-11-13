@@ -21,14 +21,18 @@ class PlayersController < ApplicationController
     if params[:padel_level].present?
       @players = @players.where(padel_level: params[:padel_level])
     end
+
+    policy_scope(Player)
   end
 
   def new
     @player = Player.new
+    authorize @player
   end
 
   def show
-    @player = current_user.player
+    @player = Player.find(params[:id])
+    authorize @player
     # if @player.nil?
     #   redirect_to new_user_player_path(current_user)
     # else
@@ -36,13 +40,10 @@ class PlayersController < ApplicationController
     # end
   end
 
-  def edit
-    @player = Player.find(params[:id])
-    @player = current_user.player
-  end
 
   def create
     @player = Player.new(player_params)
+    authorize @player
     @player.user = current_user
     if @player.save
       redirect_to root_path
@@ -51,8 +52,14 @@ class PlayersController < ApplicationController
     end
   end
 
-  def update
+  def edit
     @player = Player.find(params[:id])
+    authorize @player
+  end
+
+  def update
+    @player = current_user.player
+    authorize @player
     if @player.update(player_params)
       redirect_to root_path
     else
@@ -63,6 +70,6 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:user_id, :first_name, :last_name, :phone_number, :birth_date, :description, :tennis, :padel, :squash, :tennis_level, :padel_level, :squash_level, :gender)
+    params.require(:player).permit(:user_id, :first_name, :last_name, :phone_number, :birth_date, :description, :tennis, :padel, :squash, :tennis_level, :padel_level, :squash_level, :gender, :photo)
   end
 end

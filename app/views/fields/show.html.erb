@@ -12,6 +12,7 @@
   <li><%= @field.availability %></li>
   <li><%= @field.price %></li>
   </ul>
+  <%= cl_image_tag @field.photo, height: 300, width: 400, crop: :fill %>
 <% if current_user == @club.user %>
   <p><%= link_to 'edit', edit_club_path(@club) %> | <%= link_to 'destroy', club_path(@club), method: :delete %></p>
 <% end %>
