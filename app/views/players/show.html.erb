@@ -16,6 +16,11 @@
         <li><%= @player.padel %></li>
         <li><%= @player.padel_level %></li>
       </ul>
+
+      <% if policy(@player).edit? %>
+        <%= link_to "Update", edit_user_player_path(current_user, @player), class: "btn btn-primary" %>
+      <% end %>
+
     </div>
   </div>
 </div>
