@@ -18,6 +18,8 @@
           <%= f.input :tennis_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
           <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
           <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
           <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
       </div>
