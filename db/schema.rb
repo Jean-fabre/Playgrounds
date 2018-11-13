@@ -54,8 +54,14 @@ ActiveRecord::Schema.define(version: 2018_11_12_160514) do
   end
 
   create_table "reservations", force: :cascade do |t|
+    t.date "booked_from"
+    t.date "booked_to"
+    t.bigint "user_id"
+    t.bigint "field_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["field_id"], name: "index_reservations_on_field_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -77,7 +83,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_160514) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_player"
+    t.boolean "is_player", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -85,6 +91,8 @@ ActiveRecord::Schema.define(version: 2018_11_12_160514) do
   add_foreign_key "clubs", "users"
   add_foreign_key "fields", "clubs"
   add_foreign_key "players", "users"
+  add_foreign_key "reservations", "fields"
+  add_foreign_key "reservations", "users"
   add_foreign_key "reviews", "clubs"
   add_foreign_key "reviews", "users"
 end

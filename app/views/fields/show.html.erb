@@ -10,8 +10,9 @@
   <li><%= @field.availability %></li>
   <li><%= @field.price %></li>
   </ul>
-<% if current_user == @club.user %>
-  <p><%= link_to 'edit', edit_club_path(@club) %> | <%= link_to 'destroy', club_path(@club), method: :delete %></p>
+
+<% if policy(@field).edit? %>
+  <p><%= link_to 'edit', edit_club_field_path(@club, @field), class: "btn btn-primary" %>
 <% end %>
 </div>
 
