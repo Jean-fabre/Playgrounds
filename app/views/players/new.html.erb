@@ -6,13 +6,13 @@
     <%= f.input :phone_number %>
     <%= f.input :birth_date %>
     <%= f.input :description %>
-    <%= f.input :gender %>
+    <%= f.input :gender, collection: ["Female", "Male"] %>
     <%= f.input :tennis %>
     <%= f.input :padel %>
     <%= f.input :squash %>
     <%= f.input :tennis_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-    <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %> %>
-    <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %> %>
+    <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+    <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
     <%= f.button :submit, class: "btn btn-primary" %>
 
     <% end %>
