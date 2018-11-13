@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :player
+  has_one :club
+  has_many :reservations
+  has_many :reviews
+
 end

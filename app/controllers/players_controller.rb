@@ -24,7 +24,12 @@ class PlayersController < ApplicationController
   end
 
   def show
-    @player = Player.find(params[:id])
+    @player = current_user.player
+    # if @player.nil?
+    #   redirect_to new_user_player_path(current_user)
+    # else
+    #   @player = current_user.player
+    # end
   end
 
   def new
@@ -57,6 +62,6 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:user_id, :first_name, :last_name, :phone_number, :birth_date, :description, :tennis, :padel, :squash, :tennis_level, :padel_level, :squash_level)
+    params.require(:player).permit(:user_id, :first_name, :last_name, :phone_number, :birth_date, :description, :tennis, :padel, :squash, :tennis_level, :padel_level, :squash_level, :gender)
   end
 end

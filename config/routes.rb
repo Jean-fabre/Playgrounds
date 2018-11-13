@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users, only: [:show] do
-    resources :reservation
-    resources :player
+
+    resources :reservations
+    resources :players
     resources :reviews
   end
 
-  resources :club do
+  resources :clubs do
     resources :fields do
       resources :reservations
     end
