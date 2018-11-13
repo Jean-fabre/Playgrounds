@@ -1,4 +1,5 @@
 class FieldsController < ApplicationController
+
   def index
     @fields = Field.all
   end
@@ -16,12 +17,19 @@ class FieldsController < ApplicationController
   end
 
   def create
-    @field = Field.new(field_params)
+    @field = current_user.field.build(field_params)
+    authorize @field
     if @field.save
       redirect_to root_path
     else
       render :show
     end
+  end
+
+  def update
+    @field = Field.find(params[:id])
+    @field.update(field_params)
+    redirect_to field_path(@field)
   end
 
   def destroy
