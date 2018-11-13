@@ -1,6 +1,15 @@
 class ClubsController < ApplicationController
   def index
     @clubs = Club.all
+
+    if params[:name].present?
+      @clubs = @clubs.where("name ILIKE ?", "%#{params[:name]}%")
+    end
+
+    if params[:adress].present?
+      @clubs = @clubs.where("adress ILIKE ?", "%#{params[:adress]}%")
+    end
+    
     policy_scope(Player)
   end
 
