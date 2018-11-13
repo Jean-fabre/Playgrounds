@@ -1,6 +1,26 @@
 class PlayersController < ApplicationController
   def index
     @players = Player.all
+
+    if params[:first_name].present?
+      @players = @players.where(first_name: params[:first_name])
+    end
+
+    if params[:last_name].present?
+      @players = @players.where(last_name: params[:last_name])
+    end
+
+    if params[:tennis_level].present?
+      @players = @players.where(tennis_level: params[:tennis_level])
+    end
+
+    if params[:squash_level].present?
+      @players = @players.where(squash_level: params[:squash_level])
+    end
+
+    if params[:padel_level].present?
+      @players = @players.where(padel_level: params[:padel_level])
+    end
   end
 
   def show

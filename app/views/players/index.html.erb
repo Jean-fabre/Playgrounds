@@ -1,39 +1,44 @@
 <div class="container">
 <h1> View all players </h1>
 
-<%= form_tag boats_path, method: :get do %>
+<%= form_tag user_players_path, method: :get do %>
 
   <p><%= text_field_tag :first_name,
     params[:first_name],
     class: "form-control",
-    placeholder: "First Name"
+    placeholder: "Enter a first name"
   %></p>
 
-   <p><%= text_field_tag :last_name,
+  <p><%= text_field_tag :last_name,
     params[:last_name],
     class: "form-control",
-    placeholder: "First Name"
+    placeholder: "Enter a last name"
   %></p>
 
+  <p><%= select_tag :gender,
+    options_for_select(["M", "F"]),
+    class: "form-control",
+    prompt: "Select a gender"
+  %></p>
 
-<!-- trouver solution pour savoir comment rajouter une recherche par sport et non qu'il y ait 3 recherches différentes à selectionner par sport oui ou non -->
+  <p><%= select_tag :tennis_level,
+    options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
+    class: "form-control",
+    prompt: "Select a tennis level"
+  %></p>
 
+  <p><%= select_tag :squash_level,
+    options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
+    class: "form-control",
+    prompt: "Select a squash level"
+  %></p>
 
- <p><%= select_tag :tennis_level,
-      options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
-      class: "form-control",
-        placeholder: "Level"
-    %></p>
+  <p><%= select_tag :padel_level,
+    options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
+    class: "form-control",
+    prompt: "Select a padel level"
+  %></p>
 
-<p><%= select_tag :squash_level,
-      options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
-      class: "form-control",
-        placeholder: "Level"
-    %></p>
+  <p><%= submit_tag 'Search', class: 'btn btn-primary'%></p>
 
-    <p><%= select_tag :padel_level,
-      options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
-      class: "form-control",
-        placeholder: "Level"
-    %></p>
-</div>
+<% end %>
