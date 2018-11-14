@@ -6,10 +6,16 @@ class ClubsController < ApplicationController
       @clubs = @clubs.where("name ILIKE ?", "%#{params[:name]}%")
     end
 
-    if params[:adress].present?
-      @clubs = @clubs.where("adress ILIKE ?", "%#{params[:adress]}%")
+    if params[:address].present?
+      @clubs = @clubs.where("address ILIKE ?", "%#{params[:adress]}%")
     end
 
+    @markers = @clubs.map do |club|
+      {
+        lng: club.longitude,
+        lat: club.latitude
+      }
+    end
     policy_scope(Player)
   end
 
@@ -20,6 +26,12 @@ class ClubsController < ApplicationController
 
   def show
     @club = Club.find(params[:id])
+     @markers = @clubs.map do |club|
+      {
+        lng: club.longitude,
+        lat: club.latitude
+      }
+    end
     authorize @club
   end
 
@@ -47,10 +59,10 @@ class ClubsController < ApplicationController
   end
 
   def destroy
-  @club = Club.find(params[:id])
-  authorize @club
-  @club.destroy
-  redirect_to root_path
+    @club = Club.find(params[:id])
+    authorize @club
+    @club.destroy
+    redirect_to root_path
   end
 
   private
