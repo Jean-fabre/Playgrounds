@@ -34,3 +34,9 @@
     <%= cl_image_tag @club.photo, height: 300, width: 400, crop: :fill %>
 </div>
 
+<div
+  id="map"
+  style="width: 50%;
+  height: 400px;"
+  data-markers="<%= @markers.to_json %>"
+></div>

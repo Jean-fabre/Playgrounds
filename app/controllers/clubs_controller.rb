@@ -10,6 +10,15 @@ class ClubsController < ApplicationController
       @clubs = @clubs.where("adress ILIKE ?", "%#{params[:adress]}%")
     end
 
+
+    @clubs = Club.where.not(latitude: nil, longitude: nil)
+
+    @markers = @clubs.map do |club|
+      {
+        lng: club.longitude,
+        lat: club.latitude
+      }
+    end
     policy_scope(Player)
   end
 
@@ -20,6 +29,13 @@ class ClubsController < ApplicationController
 
   def show
     @club = Club.find(params[:id])
+     @clubs = Club.where.not(latitude: nil, longitude: nil)
+     @markers = @clubs.map do |club|
+      {
+        lng: club.longitude,
+        lat: club.latitude
+      }
+    end
     authorize @club
   end
 

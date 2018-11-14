@@ -21,6 +21,7 @@ gem 'webpacker'
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem "geocoder"
 
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
