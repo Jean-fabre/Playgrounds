@@ -1,5 +1,5 @@
 <div class="container">
-<h1> View all fields </h1>
+
 
 <%= form_tag club_fields_path, method: :get do %>
 
@@ -23,6 +23,25 @@
   %></p>
 
 <% end %>
+
+</div>
+
+
+<div class="container">
+<h1>FIELDS/Index</h1>
+<p id="notice"><%= notice %></p>
+
+<%= @fields.each do |r|%>
+  <ul>
+  <li><%= r.field_type %></li>
+  <li><%= r.availability %></li>
+  <li><%= r.price %></li>
+  </ul>
+  <% end %>
+
+</div>
+
+
 
 </div>
 

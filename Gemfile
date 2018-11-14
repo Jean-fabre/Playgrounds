@@ -18,9 +18,15 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem "geocoder"
+
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'dotenv-rails', groups: [:development, :test]
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
