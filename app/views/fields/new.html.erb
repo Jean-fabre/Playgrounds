@@ -2,8 +2,8 @@
 
  <%= simple_form_for [@club, @field] do |f| %>
     <%= f.input :field_type, collection: ["Tennis", "Squash", "Padel"] %>
-    <%= f.input :price %>
     <%= f.input :availability %>
-    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= f.input :price %>
+    <%= link_to 'Submit', club_path(@club), class: "btn btn-primary" %>
 
 <% end %>

@@ -1,64 +1,73 @@
 <div class="container">
-<h1> Find a player </h1>
+  <h1> Find a player </h1>
 
-<%= form_tag user_players_path, method: :get do %>
+  <%= form_tag user_players_path, method: :get do %>
 
-  <p><%= text_field_tag :first_name,
-    params[:first_name],
-    class: "form-control",
-    placeholder: "Enter a first name"
-  %></p>
-
-  <p><%= text_field_tag :last_name,
-    params[:last_name],
-    class: "form-control",
-    placeholder: "Enter a last name"
-  %></p>
-
-  <p><%= select_tag :gender,
-    options_for_select(["M", "F"]),
-    class: "form-control",
-    prompt: "Select a gender"
-  %></p>
-
-  <p><%= select_tag :tennis_level,
-    options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
-    class: "form-control",
-    prompt: "Select a tennis level"
-  %></p>
-
-  <p><%= select_tag :squash_level,
-    options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
-    class: "form-control",
-    prompt: "Select a squash level"
-  %></p>
-
-  <p><%= select_tag :padel_level,
-    options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
-    class: "form-control",
-    prompt: "Select a padel level"
-  %></p>
-
-  <p><%= submit_tag 'Search', class: 'btn btn-primary'%></p>
-  <p><%= link_to 'Home', root_path, class: "btn btn-primary" %></p>
-<% end %>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <% @players.each do |p| %>
-
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
-          <div class="card-category">Rating</div>
-          <div class="card-description">
-            <h2><%= p.first_name %> <%= p.last_name %></h2>
-            <p>Tennis: <%= p.tennis_level %>|Squash: <%= p.squash_level %>|Padel: <%= p.padel_level %></p>
-          </div>
-          <%= cl_image_tag @player.photo, height: 300, width: 400, crop: :fill, crop: :thumb, gravity: :face, class: "card-user" %>
-          <a class="card-link" href="#" ></a>
-        </div>
-      <% end %>
+    <div class="col-xs-12 col-sm-2">
+      <p><%= text_field_tag :first_name,
+        params[:first_name],
+        class: "form-control",
+        placeholder: "Enter a first name"
+      %></p>
     </div>
+    <div class="col-xs-12 col-sm-2">
+      <p><%= text_field_tag :last_name,
+        params[:last_name],
+        class: "form-control",
+        placeholder: "Enter a last name"
+      %></p>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+      <p><%= select_tag :gender,
+        options_for_select(["M", "F"]),
+        class: "form-control",
+        prompt: "Select a gender"
+      %></p>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+      <p><%= select_tag :tennis_level,
+        options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
+        class: "form-control",
+        prompt: "Select a tennis level"
+      %></p>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+      <p><%= select_tag :squash_level,
+        options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
+        class: "form-control",
+        prompt: "Select a squash level"
+      %></p>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+      <p><%= select_tag :padel_level,
+        options_for_select(["Beginner", "Intermediate", "Advanced", "Expert"]),
+        class: "form-control",
+        prompt: "Select a padel level"
+      %></p>
+    </div>
+    <div class="col-xs-12 col-sm-1">
+      <p><%= submit_tag 'Search', class: 'btn btn-primary'%></p>
+    </div>
+  <% end %>
+    <p><%= link_to 'Home', root_path, class: "btn btn-primary" %></p>
 
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <% @players.each do |p| %>
+          <%= link_to user_player_path(current_user, p) do %>
+
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
+            <div class="card-category">Rating</div>
+            <div class="card-description">
+              <h2><%= p.first_name %> <%= p.last_name %></h2>
+              <p>Tennis: <%= p.tennis_level %>|Squash: <%= p.squash_level %>|Padel: <%= p.padel_level %></p>
+            </div>
+            <%= cl_image_tag p.photo, height: 300, width: 400, crop: :fill, crop: :thumb, gravity: :face, class: "card-user" %>
+          </div>
+        <% end %>
+        <% end %>
+      </div>
+
+    </div>
 </div>
