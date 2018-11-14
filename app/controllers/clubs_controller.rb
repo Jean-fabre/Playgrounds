@@ -23,16 +23,17 @@ class ClubsController < ApplicationController
   def new
     @club = Club.new
     authorize @club
+    @club.user = current_user
   end
 
   def show
     @club = Club.find(params[:id])
-     @markers = @clubs.map do |club|
-      {
-        lng: club.longitude,
-        lat: club.latitude
-      }
-    end
+
+    @markers =
+      [{
+        lng: @club.longitude,
+        lat: @club.latitude
+      }]
     authorize @club
   end
 

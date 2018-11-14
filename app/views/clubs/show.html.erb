@@ -24,8 +24,9 @@
     <% end %>
   </ul>
 
-  <% if policy(@club).edit?  %>
-    <%= link_to "Update", edit_club_path(@club), class: "btn btn-primary" %>
+  <% if current_user == @club.user  %>
+
+    <%= link_to "Update", edit_club_path(current_user, @club), class: "btn btn-primary" %>
   <% end %>
   <%= link_to "Back", clubs_path, class: "btn btn-primary" %>
 
