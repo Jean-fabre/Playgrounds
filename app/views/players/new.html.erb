@@ -28,7 +28,7 @@
             Complete your profile
             </button>
           <% else %>
-            <%= f.submit "Complete your profile", class: 'btn btn-primary'%>
+            <%= link_to "Complete your profile", user_player_path(current_user, @player), class: 'btn btn-primary'%>
           <% end %>
         <% end %>
     </div>
