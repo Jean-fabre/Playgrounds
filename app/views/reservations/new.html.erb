@@ -1,7 +1,8 @@
 <h1>RESERVATIONS/NEW</h1>
   <%= simple_form_for [@field, @reservation] do |f| %>
-        <%= f.input :booked_from %>
-        <%= f.input :booked_to %>
+        <%= f.input :booking_day %>
+        <%= f.input :booking_hour_start %>
+        <%= f.input :booking_hour_end %>
         <%= f.input :skipper, collection: ["Skipper", "Own Licence"] %>
 
         <% if current_user.profile.nil? %>
