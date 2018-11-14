@@ -7,12 +7,9 @@ class ClubsController < ApplicationController
       @clubs = @clubs.where("name ILIKE ?", "%#{params[:name]}%")
     end
 
-    if params[:adress].present?
-      @clubs = @clubs.where("adress ILIKE ?", "%#{params[:adress]}%")
+    if params[:address].present?
+      @clubs = @clubs.where("address ILIKE ?", "%#{params[:adress]}%")
     end
-
-
-    @clubs = Club.where.not(latitude: nil, longitude: nil)
 
     @markers = @clubs.map do |club|
       {
@@ -30,7 +27,6 @@ class ClubsController < ApplicationController
 
   def show
     @club = Club.find(params[:id])
-     @clubs = Club.where.not(latitude: nil, longitude: nil)
      @markers = @clubs.map do |club|
       {
         lng: club.longitude,
