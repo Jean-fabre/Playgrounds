@@ -18,6 +18,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem "geocoder"
 
 group :development do
   gem 'web-console', '>= 3.3.0'
