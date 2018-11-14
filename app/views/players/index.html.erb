@@ -43,12 +43,22 @@
   <p><%= link_to 'Home', root_path, class: "btn btn-primary" %></p>
 <% end %>
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <% @players.each do |p| %>
 
-<% @players.each do |p| %>
-<p><%= p.first_name %></p>
-<p><%= p.last_name %></p>
-<p><%= p.gender %></p>
-<p><%= p.tennis_level %></p>
-<p><%= p.squash_level %></p>
-<p><%= p.padel_name %></p>
-<% end %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
+          <div class="card-category">Rating</div>
+          <div class="card-description">
+            <h2><%= p.first_name %> <%= p.last_name %></h2>
+            <p>Tennis: <%= p.tennis_level %>|Squash: <%= p.squash_level %>|Padel: <%= p.padel_level %></p>
+          </div>
+          <%= cl_image_tag @player.photo, height: 300, width: 400, crop: :fill, crop: :thumb, gravity: :face, class: "card-user" %>
+          <a class="card-link" href="#" ></a>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
