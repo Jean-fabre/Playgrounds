@@ -1,73 +1,72 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
-  # GET /events
-  # GET /events.json
   def index
     @events = Event.all
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
+    @event = Event.find(params[:id])
+    #authorize @event
   end
 
-  # GET /events/new
   def new
+    @user = current_user
+    @field = Field.find(params[:field_id])
     @event = Event.new
+    #authorize @event
+    @club = Club.find(params[:club_id])
   end
 
-  # GET /events/1/edit
   def edit
+    @event = Event.find(params[:id])
+    #authorize @event
   end
-
 
   def events_to_calendar
-    @events = Event.where.not(end_date: nil)
+    @user = current_user
+    @club = @user.club
+    @fields = @club.fields
     array_return = []
-    @events.each do |ev|
+    @fields.each do |field|
+      @events = current_user.club.events
+      @events.each do |ev|
         array_return << { "title" => ev.title, "start" => ev.start_date.to_datetime.to_s, "end" => ev.end_date.to_datetime.to_s}
+      end
     end
     render json: array_return.to_json
+    array_return = []
   end
-  # POST /events
-  # POST /events.json
+
   def create
+    @user = current_user
+    @field = Field.find(params[:field_id])
     @event = Event.new(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    #authorize @event
+    @event.user = current_user
+    @event.field = @field
+    if @event.save
+      redirect_to clubs_path
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
+
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    @event = Event.update(event_params)
+    #authorize @event
+    if @event.update(event_params)
+      redirect_to profile_events_path(events), notice: 'Reservation was successfully updated.'
+    else
+      render :edit
     end
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
+    @event = Event.update(event_params)
     @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to profile_path(profile), notice: 'Reservation was successfully destroyed.'
   end
 
   private
@@ -78,6 +77,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :start_date, :end_date)
+      params.require(:event).permit(:title, :description, :start_date, :end_date, :user_id, :field_id, :club_id)
     end
 end

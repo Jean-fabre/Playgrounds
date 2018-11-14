@@ -1,5 +1,8 @@
-<h1>New Event</h1>
-
-<%= render 'form', event: @event %>
-
-<%= link_to 'Back', events_path %>
+<h1>RESERVATIONS/NEW</h1>
+  <%= simple_form_for [@club, @field, @event] do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.submit "New reservation", class: 'btn btn-primary' %>
+      <% end %>

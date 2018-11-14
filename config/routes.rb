@@ -5,14 +5,14 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
 
-    resources :reservations
     resources :players
     resources :reviews
+    resources :events
   end
-  get 'calendar_events',to: 'events#events_to_calendar'
+  get 'calendar_events', to: 'events#events_to_calendar'
   resources :clubs do
     resources :fields do
-      resources :reservations
+      resources :events
     end
     resources :reviews
   end

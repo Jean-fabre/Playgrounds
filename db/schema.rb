@@ -30,8 +30,12 @@ ActiveRecord::Schema.define(version: 2018_11_14_111128) do
     t.text "description"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.bigint "user_id"
+    t.bigint "field_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["field_id"], name: "index_events_on_field_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "fields", force: :cascade do |t|
@@ -65,17 +69,6 @@ ActiveRecord::Schema.define(version: 2018_11_14_111128) do
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
-  create_table "reservations", force: :cascade do |t|
-    t.date "booked_from"
-    t.date "booked_to"
-    t.bigint "user_id"
-    t.bigint "field_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["field_id"], name: "index_reservations_on_field_id"
-    t.index ["user_id"], name: "index_reservations_on_user_id"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.string "comment"
@@ -101,10 +94,10 @@ ActiveRecord::Schema.define(version: 2018_11_14_111128) do
   end
 
   add_foreign_key "clubs", "users"
+  add_foreign_key "events", "fields"
+  add_foreign_key "events", "users"
   add_foreign_key "fields", "clubs"
   add_foreign_key "players", "users"
-  add_foreign_key "reservations", "fields"
-  add_foreign_key "reservations", "users"
   add_foreign_key "reviews", "clubs"
   add_foreign_key "reviews", "users"
 end
