@@ -1,26 +1,30 @@
 class ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.all
+    @reservations = policy_scope(Reservation)
   end
 
   def show
     @reservation = Reservation.find(params[:id])
+    authorize @reservation
   end
 
   def new
     @user = current_user
     @field = Field.find(params[:field_id])
     @reservation = Reservation.new
+    authorize @reservation
     @club = Club.find(params[:club_id])
   end
 
   def edit
     @reservation = Reservation.find(params[:id])
+    authorize @reservation
   end
 
   def create
     @field = Field.find(params[:field_id])
     @reservation = Reservation.new(reservation_params)
+    authorize @reservation
     @reservation.user = current_user
     @reservation.field = @field
     if @reservation.save
@@ -32,6 +36,7 @@ class ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.update(reservation_params)
+    authorize @reservation
     if @reservation.update(reservation_params)
       redirect_to profile_reservations_path(reservations), notice: 'Reservation was successfully updated.'
     else
@@ -48,6 +53,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:booked_from, :booked_to, :field_id, :user_id)
+    params.require(:reservation).permit(:booking_day, :booking_hour_start, :booking_hour_end, :field_id, :user_id)
   end
 end

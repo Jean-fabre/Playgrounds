@@ -1,18 +1,16 @@
-class FieldPolicy < ApplicationPolicy
+class ReservationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user: user)
     end
   end
 
   def show?
-    true
+    record.user == user
   end
 
   def create?
-    if user.is_player == false
-      return true
-    end
+    true
   end
 
   def update?
