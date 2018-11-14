@@ -6,13 +6,13 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
+<% (@club = current_user.club) %>
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "*placeholder* Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "*placeholder* Add new club", new_club_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Your club", club_path(@club), class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
