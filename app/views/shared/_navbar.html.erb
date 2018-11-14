@@ -6,7 +6,12 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-<% (@club = current_user.club) %>
+    <!----FOR NAVIGATION PURPOSES---->
+    <% if current_user.nil? == false %>
+    <% (@club = current_user.club) %>
+    <% end %>
+<!----END PURPOSES---->
+
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
