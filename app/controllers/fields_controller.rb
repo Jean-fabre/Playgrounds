@@ -4,7 +4,6 @@ class FieldsController < ApplicationController
 
 
   def index
-    @fields = 
     @fields = Field.all
      if params[:field_type].present?
       @fields = @fields.where(field_type: params[:field_type])
@@ -16,7 +15,7 @@ class FieldsController < ApplicationController
 
     if params[:availability]
     end
-      
+
     policy_scope(Field)
   end
 

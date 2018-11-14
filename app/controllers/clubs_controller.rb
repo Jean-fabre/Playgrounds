@@ -63,10 +63,10 @@ class ClubsController < ApplicationController
   end
 
   def destroy
-  @club = Club.find(params[:id])
-  authorize @club
-  @club.destroy
-  redirect_to root_path
+    @club = Club.find(params[:id])
+    authorize @club
+    @club.destroy
+    redirect_to root_path
   end
 
   private

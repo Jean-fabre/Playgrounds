@@ -26,18 +26,14 @@ class PlayersController < ApplicationController
   end
 
   def new
-    @player = Player.new
-    authorize @player
+      @clubs = Club.all
+      @player = Player.new
+      authorize @player
   end
 
   def show
     @player = Player.find(params[:id])
     authorize @player
-    # if @player.nil?
-    #   redirect_to new_user_player_path(current_user)
-    # else
-    #   @player = current_user.player
-    # end
   end
 
 
