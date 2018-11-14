@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one :player
   has_one :club
+  has_many :fields, through: :club
   has_many :reservations
   has_many :reviews
-
 end

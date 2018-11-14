@@ -1,17 +1,6 @@
 <h1>RESERVATIONS/NEW</h1>
-  <%= simple_form_for [@field, @reservation] do |f| %>
+  <%= simple_form_for [@club, @field, @reservation] do |f| %>
         <%= f.input :booked_from %>
         <%= f.input :booked_to %>
-        <%= f.input :skipper, collection: ["Skipper", "Own Licence"] %>
-
-        <% if current_user.profile.nil? %>
-          <%= render "shared/popupprofile" %>
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          New reservation
-          </button>
-
-        <% else %>
-            <%= f.submit "New reservation", class: 'btn btn-primary' %>
-        <% end %>
+        <%= f.submit "New reservation", class: 'btn btn-primary' %>
       <% end %>

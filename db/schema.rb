@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_11_14_100522) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.string "photo"
     t.index ["user_id"], name: "index_clubs_on_user_id"
   end
 
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_11_14_100522) do
     t.bigint "club_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["club_id"], name: "index_fields_on_club_id"
   end
 
@@ -52,6 +54,7 @@ ActiveRecord::Schema.define(version: 2018_11_14_100522) do
     t.string "tennis_level"
     t.string "padel_level"
     t.string "squash_level"
+    t.string "photo"
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
