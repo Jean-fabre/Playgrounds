@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   devise_for :users
   root to: 'pages#home'
 
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
     resources :players
     resources :reviews
   end
-
+  get 'calendar_events',to: 'events#events_to_calendar'
   resources :clubs do
     resources :fields do
       resources :reservations
