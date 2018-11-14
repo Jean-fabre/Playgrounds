@@ -9,8 +9,11 @@ class ReservationsController < ApplicationController
   end
 
   def new
+    @user = current_user
+    @field = Field.find(params[:field_id])
     @reservation = Reservation.new
     authorize @reservation
+    @club = Club.find(params[:club_id])
   end
 
   def edit
@@ -19,8 +22,11 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    @field = Field.find(params[:field_id])
     @reservation = Reservation.new(reservation_params)
     authorize @reservation
+    @reservation.user = current_user
+    @reservation.field = @field
     if @reservation.save
       redirect_to root_path
     else

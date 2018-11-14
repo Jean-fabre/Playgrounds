@@ -6,8 +6,6 @@ class CreateFields < ActiveRecord::Migration[5.2]
       t.string :price
 
       t.references :club, foreign_key: true
-
-
       t.timestamps
     end
   end

@@ -2,18 +2,22 @@
 <div class="container">
 <h1>FIELDS/SHOW</h1>
 
+
+
 <p id="notice"><%= notice %></p>
 
-<p><strong>About this filed</strong></p>
+<p><strong>About this field</strong></p>
   <ul>
   <li><%= @field.field_type %></li>
   <li><%= @field.availability %></li>
   <li><%= @field.price %></li>
   </ul>
 
+
 <% if policy(@field).edit? %>
   <p><%= link_to 'edit', edit_club_field_path(@club, @field), class: "btn btn-primary" %>
 <% end %>
+
 </div>
 
 

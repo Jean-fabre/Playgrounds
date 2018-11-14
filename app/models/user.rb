@@ -9,5 +9,4 @@ class User < ApplicationRecord
   has_many :fields, through: :club
   has_many :reservations
   has_many :reviews
-
 end

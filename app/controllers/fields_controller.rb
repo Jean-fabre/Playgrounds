@@ -1,13 +1,30 @@
 class FieldsController < ApplicationController
 
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
+
   def index
-    @fields = policy_scope(Field)
+    @fields = 
+    @fields = Field.all
+     if params[:field_type].present?
+      @fields = @fields.where(field_type: params[:field_type])
+    end
+
+    if params[:price].present?
+      @fields = @fields.where(price: params[:price])
+    end
+
+    if params[:availability]
+    end
+      
+    policy_scope(Field)
   end
 
   def new
     @field = Field.new
     authorize @field
     @club = Club.find(params[:club_id])
+
   end
 
   def show
@@ -26,6 +43,7 @@ class FieldsController < ApplicationController
     @club = Club.find(params[:club_id])
     @field = @club.fields.build(field_params)
     authorize @field
+
     if @field.save
       redirect_to root_path
     else
@@ -42,6 +60,7 @@ class FieldsController < ApplicationController
   end
 
   def destroy
+
   @field = Field.find(params[:id])
   authorize @field
   @field.destroy
@@ -51,6 +70,6 @@ class FieldsController < ApplicationController
   private
 
   def field_params
-    params.require(:field).permit(:user_id, :club_id, :field_type, :availability, :price)
+    params.require(:field).permit(:user_id, :club_id, :field_type, :availability, :price, :photo)
   end
 end

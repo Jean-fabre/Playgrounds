@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
-  has_one :club
-  has_one :user
+  belongs_to :club
+  belongs_to :user
 
   validates :rating, presence: true
 end
