@@ -30,7 +30,11 @@
   <h1>FIELDS/Index</h1>
   <h2><em>Should be clubscard</em></h2>
 
-  <div class="row">
+<% @fields.each do |f| %>
+<% f.price %>
+<% end %>
+
+  <!-- <div class="row">
     <% @fields.each do |r|%>
       <div class="col-xs-12 col-sm-4">
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
@@ -47,7 +51,7 @@
 </div>
 
 
-
+ -->
 
 
 
