@@ -1,12 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
-  before_action :set_player
+  before_action :set_photo
 
+  #before_action :authenticate_user!
   include Pundit
+  #after_action :verify_authorized, except: :index, unless: :skip_pundit?
+  #after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
-  after_action :verify_authorized, except: :index, unless: :skip_pundit?
-  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -26,9 +27,9 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
-  def set_player
+  def set_photo
     if current_user && current_user.player
-      @player = current_user.player
+      @photo = current_user.player
     end
   end
 

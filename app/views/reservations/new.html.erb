@@ -1,6 +1,0 @@
-<h1>RESERVATIONS/NEW</h1>
-  <%= simple_form_for [@club, @field, @reservation] do |f| %>
-        <%= f.input :booked_from %>
-        <%= f.input :booked_to %>
-        <%= f.submit "New reservation", class: 'btn btn-primary' %>
-      <% end %>

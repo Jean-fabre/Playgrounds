@@ -1,4 +1,5 @@
 class ClubsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @clubs = Club.all
 
@@ -6,12 +7,9 @@ class ClubsController < ApplicationController
       @clubs = @clubs.where("name ILIKE ?", "%#{params[:name]}%")
     end
 
-    if params[:adress].present?
-      @clubs = @clubs.where("adress ILIKE ?", "%#{params[:adress]}%")
+    if params[:address].present?
+      @clubs = @clubs.where("address ILIKE ?", "%#{params[:adress]}%")
     end
-
-
-    @clubs = Club.where.not(latitude: nil, longitude: nil)
 
     @markers = @clubs.map do |club|
       {
@@ -25,17 +23,17 @@ class ClubsController < ApplicationController
   def new
     @club = Club.new
     authorize @club
+    @club.user = current_user
   end
 
   def show
     @club = Club.find(params[:id])
-     @clubs = Club.where.not(latitude: nil, longitude: nil)
-     @markers = @clubs.map do |club|
-      {
-        lng: club.longitude,
-        lat: club.latitude
-      }
-    end
+
+    @markers =
+      [{
+        lng: @club.longitude,
+        lat: @club.latitude
+      }]
     authorize @club
   end
 
