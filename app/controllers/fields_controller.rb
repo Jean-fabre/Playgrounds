@@ -18,8 +18,8 @@ class FieldsController < ApplicationController
   end
 
   def new
-    @field = Field.new
     @club = Club.find(params[:club_id])
+    @field = Field.new
     authorize @field
   end
 
@@ -37,9 +37,8 @@ class FieldsController < ApplicationController
 
   def create
     @club = Club.find(params[:club_id])
-    @field = @club.fields.build(field_params)
+    @field = Field.new(field_params)
     authorize @field
-
     if @field.save
       redirect_to root_path
     else
@@ -65,6 +64,6 @@ class FieldsController < ApplicationController
   private
 
   def field_params
-    params.require(:field).permit(:user_id, :club_id, :field_type, :availability, :price, :photo)
+    params.require(:field).permit(:user_id, :club_id, :field_type, :availability, :price)
   end
 end

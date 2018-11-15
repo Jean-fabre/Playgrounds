@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :set_photo
+  before_action :set_user
 
   #before_action :authenticate_user!
   include Pundit
@@ -31,6 +32,10 @@ class ApplicationController < ActionController::Base
     if current_user && current_user.player
       @photo = current_user.player
     end
+  end
+
+  def set_user
+    @user = current_user
   end
 
 

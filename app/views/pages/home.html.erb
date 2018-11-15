@@ -1,45 +1,46 @@
-
 <% if !user_signed_in? %>
 
   <%= content_for :title do  %>
-  Playground - home
+    Playground - home
   <% end %>
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%=
-  url_to_image 'tennis_court3.jpeg' %>');">
-        <div class="banner-content">
-          <h1>Playground</h1>
-          <p>Book fast - Play well</p>
-          <div class="homebutton">
-            <p>Rent a field<p>
-          </div>
-        </div>
-    <div class="banner second_banner">
-      <p>Book your <strong>sport</strong> field and play with the <strong>community</strong></p>
-    </div>
-<div class="banner home_page_banner">
-  <div class="row home_row">
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <p>Play Tennis</p>
-        <img src="https://img.icons8.com/ios/50/000000/tennis.png">
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <p>Play squash</p>
-        <img src="https://img.icons8.com/ios/50/000000/squash-racquet.png">
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <p>Play padel<p>
-        <img src="https://img.icons8.com/ios/50/000000/tennis-filled.png">
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= url_to_image 'tennis_court3.jpeg' %>');">
+    <div class="banner-content">
+      <h1>Playground</h1>
+      <p>Book fast - Play well</p>
+      <div class="homebutton">
+        <p>Rent a field</p>
       </div>
     </div>
   </div>
-</div>
 
-  <div id="calendar" data-target="<%= @events %>"></div>
+
+    <div class="banner second_banner">
+      <p>Book your <strong>sport</strong> field and play with the <strong>community</strong></p>
+    </div>
+
+    <div class="banner home_page_banner">
+      <div class="row home_row">
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+            <p>Play Tennis</p>
+            <img src="https://img.icons8.com/ios/50/000000/tennis.png">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+            <p>Play squash</p>
+            <img src="https://img.icons8.com/ios/50/000000/squash-racquet.png">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+            <p>Play padel<p>
+            <img src="https://img.icons8.com/ios/50/000000/tennis-filled.png">
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 <% elsif user_signed_in? && current_user.is_player && current_user.player.first_name.nil? %>
    <div class="container">
@@ -104,50 +105,88 @@
 
   <%= content_for :title do  %>
     Playground - home
-    <% end %>
-      <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%=
+  <% end %>
+
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%=
         url_to_image 'tennis_court3.jpeg' %>');">
-          <div class="banner-content">
-            <h1>Playground</h1>
-            <p>Book fast - Play well</p>
-            <div class="homebutton">
-              <p>Rent a field<p>
-            </div>
-          </div>
-        </div>
-    <div class="banner second_banner">
-      <p>Book your <strong>sport</strong> field and play with the <strong>community</strong></p>
-    </div>
-<div class="banner home_page_banner">
-  <div class="row home_row">
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <p>Play Tennis</p>
-        <img src="https://img.icons8.com/ios/50/000000/tennis.png">
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <p>Play squash</p>
-        <img src="https://img.icons8.com/ios/50/000000/squash-racquet.png">
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <p>Play padel<p>
-        <img src="https://img.icons8.com/ios/50/000000/tennis-filled.png">
+    <div class="banner-content">
+      <h1>Playground</h1>
+      <p>Book fast - Play well</p>
+      <div class="homebutton">
+        <p>Rent a field<p>
       </div>
     </div>
   </div>
-</div>
 
-  <div id="calendar" data-target="<%= @events %>"></div>
+  <div class="banner second_banner">
+    <p>Book your <strong>sport</strong> field and play with the <strong>community</strong></p>
+  </div>
+
+  <div class="banner home_page_banner">
+    <div class="row home_row">
+      <div class="col-xs-12 col-sm-4">
+        <div class="card">
+          <p>Play Tennis</p>
+          <img src="https://img.icons8.com/ios/50/000000/tennis.png">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card">
+          <p>Play squash</p>
+          <img src="https://img.icons8.com/ios/50/000000/squash-racquet.png">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card">
+          <p>Play padel<p>
+          <img src="https://img.icons8.com/ios/50/000000/tennis-filled.png">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 <% else %>
-  <h1>Dashboard for club</h1>
+<!---DASHBOARD FOR OWNER---->
+<h1>Dashboard for club</h1>
+<!--declaring needed varibles for dashboard-->
+<% @club = current_user.club %>
+<% @fields = @club.fields %>
 
+<!--end declariation--->
+
+
+<div class="panel-group">
+<div class="col-xs-12 col-sm-4">
+<% @fields.each do |f| %>
+<% f.events.each do |e| %>
+<!----PANEL UNIT---->
+<div class="panel dash-field-panel">
+  <div class="panel-heading"><h2>field <%= f.id %></h2><%= f.field_type %></div>
+  <div class="panel-body">
+    <% t = e.start_date  %>
+    <% te = e.end_date %>
+    <p>next reservation: <%= t.hour  %>:<%= t.min  %> - <%= t.day %>/<%= t.month %>/<%= t.year%> </p>
+    <p>by: <%= e.user.email  %></p>
+    <p>for: <%= e = (((te - t)*24).to_i / 1800) %> minutes</p>
+    <p>fee: €<%= f.price * (e/60)  %></p>
+
+<button id="hide-calendar">Show Calendar</button>
+</div>
+<div id="calendar" data-target="<%= @events %>"></div>
+</div>
+<% end %>
+<% end %>
+<!----PANEL END----->
+
+
+
+</div>
 </div>
 
 
 <% end %>
+
 
