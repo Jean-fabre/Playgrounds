@@ -17,18 +17,14 @@
       <!-- Links when user is a player -->
       <% if @user.is_player %>
         <%= link_to "Browse Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Find a partenaire", user_players_path(@user), class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Messages", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Find a partner", user_players_path(@user), class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "About", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <!-- Avatar with dropdown menu -->
         <div class="navbar-wagon-item">
           <div class="dropdown">
-
-
                 <%= cl_image_tag current_user.player.photo, width: 300, height: 300, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-
-
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-
-
               </li>
               <li>
                 <%= link_to "#" do %>
