@@ -1,5 +1,4 @@
 
-<%= current_user.id %>
 <% if !user_signed_in? %>
 
   <%= content_for :title do  %>
@@ -42,7 +41,7 @@
 
   <div id="calendar" data-target="<%= @events %>"></div>
 
-<% elsif user_signed_in? && !current_user.player.first_name %>
+<% elsif user_signed_in? && current_user.is_player && !current_user.player.first_name %>
    <div class="container">
     <div class="row">
       <div class="col-sm-offset-3 col-sm-6">
@@ -121,6 +120,9 @@
 </div>
 
   <div id="calendar" data-target="<%= @events %>"></div>
+
+<% else %>
+  <h1>Dashboard for club</h1>
 
 <% end %>
 
