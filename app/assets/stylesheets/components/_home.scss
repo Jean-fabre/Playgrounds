@@ -10,6 +10,15 @@
   justify-content: center;
   width: 100%;
 }
+
+.second_banner {
+  height: 50vh !important;
+    p {
+    text-shadow: 0px 2px rgba(0,0,0,0.15);
+    color: black !important;
+    text-decoration: none; }
+  }
+
 .banner h1 {
   font-size: 50px;
   font-weight: bold;
@@ -21,8 +30,9 @@
   color: rgb(255, 255, 255);
   opacity: 0.6;
   margin-bottom: 30px;
-  width: 290px
+  width: 400px
 }
+
 .banner-content
 {
 box-shadow: 0 1px 2px rgba(0,0,0,0.07);
@@ -44,4 +54,16 @@ width: 550px;
 {
 margin-right: 12px
 }
+.home_row
+{
+display: flex;
+}
+.home_page_banner
+{
+background-color: #2E8B57 !important;
+height: 60vh !important;
+}
+
+
+
 
