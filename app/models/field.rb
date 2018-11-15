@@ -1,9 +1,9 @@
 class Field < ApplicationRecord
-  has_one :club
+  belongs_to :club
   has_many :events
 
   has_many :availabilities
-  has_one :user, through: :club
+  #has_one :user, through: :club
 
   validates :field_type, presence: true, inclusion: { in: ["Tennis", "Squash", "Padel"] }
   validates :price, presence: true

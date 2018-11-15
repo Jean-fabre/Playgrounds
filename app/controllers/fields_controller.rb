@@ -1,5 +1,4 @@
 class FieldsController < ApplicationController
-
   #skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -20,9 +19,8 @@ class FieldsController < ApplicationController
 
   def new
     @field = Field.new
-    authorize @field
     @club = Club.find(params[:club_id])
-
+    authorize @field
   end
 
   def show
@@ -58,7 +56,6 @@ class FieldsController < ApplicationController
   end
 
   def destroy
-
   @field = Field.find(params[:id])
   authorize @field
   @field.destroy
