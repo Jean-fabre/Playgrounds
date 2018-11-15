@@ -19,6 +19,7 @@
       <% if @user.is_player %>
         <!-- Links when user is a player -->
         <%= link_to "Browse Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% else %>
         <!-- Links when user is a clubowner -->
         <%= link_to "*placeholder* Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
