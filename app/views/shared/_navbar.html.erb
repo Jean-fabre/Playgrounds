@@ -23,7 +23,7 @@
         <!-- Links when user is a clubowner -->
         <%= link_to "*placeholder* Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "*placeholder* Add new club", new_club_path, class: "navbar-wagon-item navbar-wagon-link" %>
-            <% if @user.club == nil %>
+            <% if @club.nil? || current_user.club[:club_id] == nil %>
               <%= link_to "Create your club", new_club_path, class: "navbar-wagon-item navbar-wagon-link" %>
             <% else %>
               <%= link_to "Your club", club_path(@club), class: "navbar-wagon-item navbar-wagon-link" %>
@@ -38,8 +38,8 @@
                 <%= link_to new_user_player_path(current_user) do %>
                   <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
                   <% end %>
-               <% else %>
-          <%= cl_image_tag current_user.player.photo, width: 300, height: 300, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+               <% elsif current_user.player.photo.nil? %>
+              <%= cl_image_tag current_user.player.photo, width: 300, height: 300, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
