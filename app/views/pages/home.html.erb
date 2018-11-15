@@ -42,39 +42,61 @@
     </div>
 
 
-<% elsif user_signed_in? && current_user.is_player && !current_user.player.first_name %>
+<% elsif user_signed_in? && current_user.is_player && current_user.player.first_name.nil? %>
    <div class="container">
     <div class="row">
-      <div class="col-sm-offset-3 col-sm-6">
-
-        <h1> Please complete your profile : </h1>
-
-          <%= simple_form_for [current_user, @player] do |f| %>
-            <%= f.input :first_name %>
-            <%= f.input :last_name %>
-            <%= f.input :phone_number %>
-            <%= f.input :birth_date, collusion: (1920..2018) %>
-            <%= f.input :description %>
-            <%= f.input :gender, collection: ["Female", "Male"] %>
-            <%= f.input :tennis %>
-            <%= f.input :padel %>
-            <%= f.input :squash %>
-            <%= f.input :tennis_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-            <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-            <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-            <%= f.input :photo %>
-            <%= f.input :photo_cache, as: :hidden %>
-
-            <% if current_user.player.first_name %>
-              <%= render "shared/popupplayer" %>
-                <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Complete your profile
-              </button>
-            <% else %>
-              <%= f.submit %>
+      <div class="text-center">
+          <h1> Please complete your profile : </h1>
+              <%= simple_form_for [current_user, @player], html: { class: "profile-player" } do |f| %>
+              <div class="col-xs-12 col-sm-6" style="padding: 0px">
+                <%= f.input :first_name %>
+              </div>
+              <div class="col-xs-12 col-sm-6" style="padding-right: 0px">
+                <%= f.input :last_name %>
+              </div>
+              <div class="col-xs-12 col-sm-6" style="padding: 0px">
+                <%= f.input :phone_number %>
+              </div>
+              <div class="col-xs-12 col-sm-6" style="padding-right: 0px">
+                <%= f.input :gender, collection: ["Female", "Male"] %>
+              </div>
+                <%= f.input :birth_date, collusion: (1920..2018) %>
+                <%= f.input :description %>
+              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                <%= f.input :tennis %>
+              </div>
+              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                <%= f.input :padel %>
+              </div>
+              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                <%= f.input :squash %>
+              </div>
+              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                <%= f.input :tennis_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+              </div>
+              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+              </div>
+              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+              </div>
+                <%= f.input :photo %>
+              <div class="text-center">
+                <%= f.input :photo_cache, as: :hidden %>
+              </div>
+                <% if current_user.player.first_name %>
+                  <%= render "shared/popupplayer" %>
+                    <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Complete your profile
+                  </button>
+                <% else %>
+              <div class="text-center">
+                  <%= f.submit %>
+              </div>
+                <% end %>
+             </div>
             <% end %>
-          <% end %>
       </div>
     </div>
   </div>
@@ -129,6 +151,9 @@
 
   <h1>Dashboard for club</h1>
 <div id="calendar" data-target="<%= @events %>"></div>
+
+</div>
+
 
 <% end %>
 
