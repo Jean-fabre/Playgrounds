@@ -54,9 +54,10 @@
       <!-- Navbar for owner -->
       <% else %>
 
-        <% if @club.nil? || current_user.club[:club_id] == nil %>
+        <% if current_user.club.nil? %>
           <%= link_to "Create your club", new_club_path, class: "navbar-wagon-item navbar-wagon-link" %>
-        <% else %>
+
+        <% elsif current_user.club %>
           <%= link_to "*placeholder* Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "*placeholder* Add new field", new_club_field_path(@club), class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "Your club", club_path(@club), class: "navbar-wagon-item navbar-wagon-link" %>

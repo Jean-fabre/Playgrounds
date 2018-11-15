@@ -4,6 +4,7 @@ class Club < ApplicationRecord
   has_many :fields
   has_many :events, through: :fields
   validates :user_id, uniqueness: true
+  validates :user_id, uniqueness: true
   validates :name, presence: true
   validates :address, presence: true
 
