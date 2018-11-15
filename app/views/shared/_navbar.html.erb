@@ -59,7 +59,7 @@
 
         <% elsif current_user.club %>
           <%= link_to "*placeholder* Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "*placeholder* Add new field", new_club_field_path(@club), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "*placeholder* Add new field", new_club_field_path(current_user.club), class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "Your club", club_path(@club), class: "navbar-wagon-item navbar-wagon-link" %>
         <% end %>
 
