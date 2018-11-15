@@ -153,9 +153,10 @@
 <!---DASHBOARD FOR OWNER---->
 <h1>Dashboard for club</h1>
 <!--declaring needed varibles for dashboard-->
+<% if current_user.club.nil? %>
+<% else %>
 <% @club = current_user.club %>
 <% @fields = @club.fields %>
-
 <!--end declariation--->
 
 
@@ -191,3 +192,4 @@
 <% end %>
 
 
+<% end %>
