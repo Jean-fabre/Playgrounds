@@ -4,9 +4,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  acts_as_messageable
+
   has_one :player
   has_one :club
   has_many :fields, through: :club
   has_many :events
   has_many :reviews
+
+  def name
+    "User #{id}"
+  end
+
+  def mailboxer_email(object)
+    nil
+  end
 end

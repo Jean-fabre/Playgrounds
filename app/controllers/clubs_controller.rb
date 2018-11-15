@@ -23,7 +23,6 @@ class ClubsController < ApplicationController
   def new
     @club = Club.new
     authorize @club
-    @club.user = current_user
   end
 
   def show
