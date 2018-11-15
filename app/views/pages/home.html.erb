@@ -1,18 +1,22 @@
 
-<%= content_for :title do  %>
-Playground - home
-<% end %>
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%=
-url_to_image 'tennis_court3.jpeg' %>');">
-      <div>
-        <h1>Playground</h1>
-        <p>Book fast - Play well</p>
-          <p>Rent a field<p>
-      </div>
+<%= current_user.id %>
+<% if !user_signed_in? %>
+
+  <%= content_for :title do  %>
+  Playground - home
+  <% end %>
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%=
+  url_to_image 'tennis_court3.jpeg' %>');">
+        <div class="banner-content">
+          <h1>Playground</h1>
+          <p>Book fast - Play well</p>
+          <div class="homebutton">
+            <p>Rent a field<p>
+          </div>
+        </div>
+    <div class="banner second_banner">
+      <p>Book your <strong>sport</strong> field and play with the <strong>community</strong></p>
     </div>
-<div class="banner second_banner">
-    <p>Book your <strong>sport</strong> field and play with the <strong>community</strong></p>
-</div>
 <div class="banner home_page_banner">
   <div class="row home_row">
     <div class="col-xs-12 col-sm-4">
@@ -31,6 +35,92 @@ url_to_image 'tennis_court3.jpeg' %>');">
       <div class="card">
         <p>Play padel<p>
         <img src="https://img.icons8.com/ios/50/000000/tennis-filled.png">
+      </div>
     </div>
   </div>
 </div>
+
+  <div id="calendar" data-target="<%= @events %>"></div>
+
+<% elsif user_signed_in? && !current_user.player.first_name %>
+   <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+
+        <h1> Please complete your profile : </h1>
+
+          <%= simple_form_for [current_user, @player] do |f| %>
+            <%= f.input :first_name %>
+            <%= f.input :last_name %>
+            <%= f.input :phone_number %>
+            <%= f.input :birth_date, collusion: (1920..2018) %>
+            <%= f.input :description %>
+            <%= f.input :gender, collection: ["Female", "Male"] %>
+            <%= f.input :tennis %>
+            <%= f.input :padel %>
+            <%= f.input :squash %>
+            <%= f.input :tennis_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+            <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+            <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+            <%= f.input :photo %>
+            <%= f.input :photo_cache, as: :hidden %>
+
+            <% if current_user.player.first_name %>
+              <%= render "shared/popupplayer" %>
+                <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Complete your profile
+              </button>
+            <% else %>
+              <%= f.submit %>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+<% elsif user_signed_in? && current_user.player.first_name %>
+
+  <%= content_for :title do  %>
+    Playground - home
+    <% end %>
+      <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%=
+        url_to_image 'tennis_court3.jpeg' %>');">
+          <div class="banner-content">
+            <h1>Playground</h1>
+            <p>Book fast - Play well</p>
+            <div class="homebutton">
+              <p>Rent a field<p>
+            </div>
+          </div>
+        </div>
+    <div class="banner second_banner">
+      <p>Book your <strong>sport</strong> field and play with the <strong>community</strong></p>
+    </div>
+<div class="banner home_page_banner">
+  <div class="row home_row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <p>Play Tennis</p>
+        <img src="https://img.icons8.com/ios/50/000000/tennis.png">
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <p>Play squash</p>
+        <img src="https://img.icons8.com/ios/50/000000/squash-racquet.png">
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <p>Play padel<p>
+        <img src="https://img.icons8.com/ios/50/000000/tennis-filled.png">
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div id="calendar" data-target="<%= @events %>"></div>
+
+<% end %>
+
