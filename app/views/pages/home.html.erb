@@ -15,6 +15,7 @@
       </div>
   <div id="calendar" data-target="<%= @events %>"></div>
 
+
 <% elsif user_signed_in? && !current_user.player.first_name %>
 
    <div class="container">
@@ -53,7 +54,7 @@
     </div>
   </div>
 
-<% else user_signed_in? && current_user.player.first_name %>
+<% elsif user_signed_in? && current_user.player.first_name %>
 
   <%= content_for :title do  %>
     Playground - home
