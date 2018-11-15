@@ -31,7 +31,7 @@ class EventsController < ApplicationController
     @fields.each do |field|
       @events = current_user.club.events
       @events.each do |ev|
-        array_return << { "title" => ev.title, "start" => ev.start_date.to_datetime.to_s, "end" => ev.end_date.to_datetime.to_s}
+        array_return << { "title" => "field #{ev.field.id}", "start" => ev.start_date.to_datetime.to_s, "end" => ev.end_date.to_datetime.to_s}
       end
     end
     render json: array_return.to_json
