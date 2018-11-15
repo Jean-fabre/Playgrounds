@@ -57,7 +57,7 @@ class PlayersController < ApplicationController
     @player = current_user.player
     authorize @player
     if @player.update(player_params)
-      redirect_to root_path
+      redirect_to user_player_path(current_user, @player)
     else
       render :edit
     end
