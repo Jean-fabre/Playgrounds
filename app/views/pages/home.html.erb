@@ -1,4 +1,3 @@
-<div id="calendar" data-target="<%= @events %>"></div>
 <% if !user_signed_in? %>
 
   <%= content_for :title do  %>
@@ -122,6 +121,7 @@
 
 <% else %>
   <h1>Dashboard for club</h1>
+<div id="calendar" data-target="<%= @events %>"></div>
 
 <% end %>
 
