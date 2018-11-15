@@ -31,8 +31,14 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
+           <% if current_user.player.nil? %>
+              <li>
+                <%= link_to new_user_player_path(current_user) do %>
+                  <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                  <% end %>
+               <% else %>
           <%= cl_image_tag current_user.player.photo, width: 300, height: 300, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-
+          <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
