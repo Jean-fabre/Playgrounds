@@ -15,6 +15,7 @@
 
     <% if user_signed_in? %>
 
+
       <% if @user.is_player %>
         <!-- Links when user is a player -->
         <%= link_to "Browse Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
@@ -28,6 +29,7 @@
               <%= link_to "Your club", club_path(@club), class: "navbar-wagon-item navbar-wagon-link" %>
             <% end %>
         <% end %>
+
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
