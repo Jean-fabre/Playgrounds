@@ -14,60 +14,61 @@
         </div>
       </div>
   <div id="calendar" data-target="<%= @events %>"></div>
+
 <% elsif user_signed_in? && !current_user.player.first_name %>
 
- <div class="container">
-  <div class="row">
-    <div class="col-sm-offset-3 col-sm-6">
+   <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
 
-      <h1> Please complete your profile : </h1>
+        <h1> Please complete your profile : </h1>
 
-        <%= simple_form_for [current_user, @player] do |f| %>
-          <%= f.input :first_name %>
-          <%= f.input :last_name %>
-          <%= f.input :phone_number %>
-          <%= f.input :birth_date, collusion: (1920..2018) %>
-          <%= f.input :description %>
-          <%= f.input :gender, collection: ["Female", "Male"] %>
-          <%= f.input :tennis %>
-          <%= f.input :padel %>
-          <%= f.input :squash %>
-          <%= f.input :tennis_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-          <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-          <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-          <%= f.input :photo %>
-          <%= f.input :photo_cache, as: :hidden %>
+          <%= simple_form_for [current_user, @player] do |f| %>
+            <%= f.input :first_name %>
+            <%= f.input :last_name %>
+            <%= f.input :phone_number %>
+            <%= f.input :birth_date, collusion: (1920..2018) %>
+            <%= f.input :description %>
+            <%= f.input :gender, collection: ["Female", "Male"] %>
+            <%= f.input :tennis %>
+            <%= f.input :padel %>
+            <%= f.input :squash %>
+            <%= f.input :tennis_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+            <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+            <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+            <%= f.input :photo %>
+            <%= f.input :photo_cache, as: :hidden %>
 
-          <% if current_user.player.first_name %>
-            <%= render "shared/popupplayer" %>
-              <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Complete your profile
-            </button>
-          <% else %>
-            <%= f.submit %>
+            <% if current_user.player.first_name %>
+              <%= render "shared/popupplayer" %>
+                <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Complete your profile
+              </button>
+            <% else %>
+              <%= f.submit %>
+            <% end %>
           <% end %>
-        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
 <% else user_signed_in? && current_user.player.first_name %>
 
-<%= content_for :title do  %>
-  Playground - home
-  <% end %>
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%=
-  url_to_image 'tennis_court3.jpeg' %>');">
-        <div class="banner-content">
-          <h1>Playground</h1>
-          <p>Book fast - Play well</p>
-          <div class="homebutton">
-            <p>Rent a field<p>
+  <%= content_for :title do  %>
+    Playground - home
+    <% end %>
+    <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%=
+    url_to_image 'tennis_court3.jpeg' %>');">
+          <div class="banner-content">
+            <h1>Playground</h1>
+            <p>Book fast - Play well</p>
+            <div class="homebutton">
+              <p>Rent a field<p>
+            </div>
           </div>
         </div>
-      </div>
-  <div id="calendar" data-target="<%= @events %>"></div>
+    <div id="calendar" data-target="<%= @events %>"></div>
 
 
 
