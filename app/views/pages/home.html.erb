@@ -1,3 +1,4 @@
+<%= current_user.id %>
 <% if !user_signed_in? %>
 
   <%= content_for :title do  %>
@@ -17,7 +18,6 @@
 
 
 <% elsif user_signed_in? && !current_user.player.first_name %>
-
    <div class="container">
     <div class="row">
       <div class="col-sm-offset-3 col-sm-6">
