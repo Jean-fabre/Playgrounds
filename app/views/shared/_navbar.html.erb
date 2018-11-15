@@ -17,6 +17,15 @@
       <!-- Links when user is a player -->
       <% if @user.is_player %>
         <%= link_to "Browse Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+        <%= link_to "Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% else %>
+        <!-- Links when user is a clubowner -->
+        <%= link_to "*placeholder* Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "*placeholder* Add new club", new_club_path, class: "navbar-wagon-item navbar-wagon-link" %>
+            <% if @user.club == nil %>
+              <%= link_to "Create your club", new_club_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
         <%= link_to "Find a partenaire", user_players_path(@user), class: "navbar-wagon-item navbar-wagon-link" %>
         <!-- Avatar with dropdown menu -->
         <div class="navbar-wagon-item">
@@ -27,6 +36,7 @@
                   <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
                 <% end %>
               </li>
+
             <% else %>
                 <%= cl_image_tag current_user.player.photo, width: 300, height: 300, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% end %>
