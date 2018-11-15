@@ -26,6 +26,7 @@ class PlayersController < ApplicationController
   end
 
   def new
+      @user = current_user
       @clubs = Club.all
       @player = Player.new
       authorize @player
