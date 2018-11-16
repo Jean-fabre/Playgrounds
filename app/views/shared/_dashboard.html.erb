@@ -1,13 +1,16 @@
 <!---DASHBOARD FOR OWNER---->
 <h1>Dashboard for club</h1>
+<div class="panel">
  <div class="col-xs col-lg">
   <p>Total bookings: <%= @upcoming_events.count  %></p>
   <p>Projected revenue: €<%= @total %></p>
   <p>This week's revenue: €<%= @this_week_revenue  %></p>
-  <p>Revenue difference: <%= ((@this_week_revenue - @last_week_revenue)/((@this_week_revenue - @last_week_revenue)/2))*100  %>%
+  <% if @last_week_revenue.nil? %>
+  <p>Revenue difference: <%= ((@this_week_revenue - @last_week_revenue)/((@this_week_revenue - @last_week_revenue)/2))*100  %>%</p>
+  <% end %>
   <p>Booking difference:  </p>
  </div>
-
+</div>
 <div class="panel-group">
   <% @fields.each do |f| %>
   <div class="col-xs-12 col-sm-4">
