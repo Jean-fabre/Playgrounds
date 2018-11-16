@@ -1,4 +1,6 @@
+<div class="centered_div">
 <h1>RESERVATIONS/NEW</h1>
+</div>
   <%= simple_form_for [@club, @field, @event] do |f| %>
         <%= f.input :title %>
         <%= f.input :description %>
@@ -6,3 +8,4 @@
         <%= f.input :end_date %>
         <%= f.submit "New reservation", class: 'btn btn-primary' %>
       <% end %>
+</div>
