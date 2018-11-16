@@ -1,20 +1,38 @@
 <h1><%= @conversation.subject %></h1>
-
-<% @conversation.receipts_for(current_user).each do |receipt| %>
-  <div>
-   <div><%= receipt.message.sender.name %> commented : </div>
-    <p> - <%= receipt.message.body %></p>
+  <div class="container" id="container_message">
+    <div class="row">
+      <div class="text-center">
+        <div class="inbox">
+          <% @conversation.receipts_for(current_user).each do |receipt| %>
+            <div class="message">
+              <div class="message-avatar">
+                <%= cl_image_tag receipt.message.sender.player.photo, crop: :thumb, gravity: :face, class: "avatar" %>
+              </div>
+              <div class="message-name">
+                <%= receipt.message.sender.player.first_name %> <%= receipt.message.sender.player.last_name %>
+              </div>
+              <div class="message-content">
+                <p><%= receipt.message.body %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
 
+  <div class="row">
+    <div class="text-center">
+      <%= form_tag conversation_messages_path(@conversation), method: :post do %>
+        <div>
+          <%= text_area_tag :body %>
+        </div>
+          <%= submit_tag 'Send', class: "btn btn-success"%>
+      <% end %>
 
-<%= form_tag conversation_messages_path(@conversation), method: :post do %>
-  <div>
-    <%= text_area_tag :body %>
+      <%= link_to 'destroy', conversation_path, method: :delete, class: "btn btn-danger" %></p>
+      <%= link_to 'Back', conversations_path, class: "btn btn-primary" %></p>
+    </div>
   </div>
-    <%= submit_tag 'Send', class: "btn btn-success"%>
-<% end %>
-
-<%= link_to 'destroy', conversation_path, method: :delete, class: "btn btn-danger" %></p>
-<%= link_to 'Back', conversations_path, class: "btn btn-primary" %></p>
+</div>
 

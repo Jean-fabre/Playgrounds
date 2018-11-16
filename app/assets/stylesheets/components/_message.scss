@@ -1,0 +1,53 @@
+.message {
+  display: flex;
+  border-left: 1px solid grey;
+  border-bottom: 1px solid grey;
+  border-right: 1px solid grey;
+  border-top: 1px solid grey;
+  padding: 10px;
+  /* Your turn to design a flexbox message */
+}
+.message h3 {
+  font-size: 14px;
+  margin: 10px;
+}
+.message h6 {
+  font-size: 12px;
+  margin: 0px;
+}
+.message p {
+  font-size: 12px;
+  margin: 0px;
+  color: grey;
+}
+
+.message-name {
+  padding-left: 25px;
+  flex: 0 0 200px;
+  margin: 0px;
+}
+.message-content {
+  flex: 1 0 545px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.message-status {
+  padding-right: 0px;
+  flex: 0 0 200px;
+}
+#b {
+  border-top: none;
+}
+#c {
+  border-top: none;
+}
+#pending {
+  color: grey;
+}
+#accepted {
+  color: green;
+}
+#declined {
+  color: red;
+}

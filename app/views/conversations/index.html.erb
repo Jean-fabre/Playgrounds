@@ -1,10 +1,31 @@
-<h1>My Messages</h1>
 
-<h2>Conversations</h2>
-<% @conversations.each do |conversation| %>
-  <div>
-    <%= link_to conversation.subject, conversation_path(conversation), class: "btn btn-primary" %>
+<div class="container" id="container_message">
+  <div class="row">
+    <div class="text-center">
+      <h1>Your conversation</h1>
+
+      <% @conversations.each do |c| %>
+
+        <div class="inbox">
+          <div class="message">
+            <div class="message-avatar">
+                <%= cl_image_tag c.receipts_for(current_user).last.message.sender.player.photo, width: 300, height: 300, crop: :thumb, gravity: :face, class: "avatar" %>
+            </div>
+            <div class="message-name">
+              <p><%= c.receipts_for(current_user).last.message.sender.player.first_name %> <%= c.receipts_for(current_user).last.message.sender.player.last_name %>
+              </p>
+            </div>
+            <div class="message-content">
+              <%= link_to c.subject, conversation_path(c) %>
+            </div>
+            <div class="message-status">
+              <p><%= c.receipts_for(current_user).last.message.body %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
 
 <%= link_to "New conversation", new_conversation_path, class: "btn btn-success"%>
