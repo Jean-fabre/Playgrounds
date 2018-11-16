@@ -1,5 +1,5 @@
 
-<% if !user_signed_in? %>
+<% if !user_signed_in?  %>
 
   <%= content_for :title do  %>
     Playground - home
@@ -149,7 +149,8 @@
 
 
 
-<% else %>
+<% elsif current_user.club != nil %>
 <!----WHEN USER IS A CLUBOWNER--->
 <%= render 'shared/dashboard' %>
+
 <% end %>
