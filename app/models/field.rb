@@ -1,5 +1,5 @@
 class Field < ApplicationRecord
-  has_one :club
+  belongs_to :club
   has_many :events
 
   has_many :availabilities
@@ -7,5 +7,4 @@ class Field < ApplicationRecord
 
   validates :field_type, presence: true, inclusion: { in: ["Tennis", "Squash", "Padel"] }
   validates :price, presence: true
-  mount_uploader :photo, PhotoUploader
 end
