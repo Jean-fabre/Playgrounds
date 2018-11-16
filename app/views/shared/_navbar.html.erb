@@ -17,7 +17,7 @@
       <!-- Links when user is a player -->
       <% if @user.is_player %>
         <%= link_to "Browse Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Messages", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "Find a partner", user_players_path(@user), class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "About", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <!-- Avatar with dropdown menu -->
