@@ -4,16 +4,9 @@
   <%= content_for :title do  %>
     Playground - home
   <% end %>
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= url_to_image 'tennis_court3.jpeg' %>');">
-    <div class="banner-content">
-      <h1>Playground</h1>
-      <p>Book fast - Play well</p>
-      <div class="homebutton">
-        <p>Rent a field</p>
-      </div>
-    </div>
-  </div>
+     <%= render 'shared/home' %>
 
+    <!-- Remeber to put all the content you want on top of the slider below the slider code -->
 
     <div class="banner second_banner">
       <p>Book your <strong>sport</strong> field and play with the <strong>community</strong></p>
@@ -53,16 +46,7 @@
     Playground - home
   <% end %>
 
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%=
-        url_to_image 'tennis_court3.jpeg' %>');">
-    <div class="banner-content">
-      <h1>Playground</h1>
-      <p>Book fast - Play well</p>
-      <div class="homebutton">
-        <p>Rent a field<p>
-      </div>
-    </div>
-  </div>
+     <%= render 'shared/home' %>
 
   <div class="banner second_banner">
     <p>Book your <strong>sport</strong> field and play with the <strong>community</strong></p>
@@ -92,10 +76,14 @@
   </div>
 
 
+<script>$('.carousel').carousel();</script>
+
+
 
 
 <% elsif current_user.club != nil %>
 <!----WHEN USER IS A CLUBOWNER--->
 <%= render 'shared/dashboard' %>
+
 
 <% end %>
