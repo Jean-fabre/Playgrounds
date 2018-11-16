@@ -1,5 +1,6 @@
-<h1>All Conversations</h1>
+<h1>My Messages</h1>
 
+<h2>Conversations</h2>
 <% @conversations.each do |conversation| %>
   <div>
     <%= link_to conversation.subject, conversation_path(conversation), class: "btn btn-primary" %>
