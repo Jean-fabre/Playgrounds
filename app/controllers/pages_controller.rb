@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   def home
     # --------------DASHBOARD BEGIN----do not touch-------------
     # All events for a club - dashboard
-    if user_signed_in? && current_user.club != nil
+    if @fields # check if user has fields (prevent crash)
     @upcoming_events = []
     @fields.each do |f|
       if f.events #Check if a field has events
@@ -35,6 +35,7 @@ class PagesController < ApplicationController
       end
     end
   end
+
   # end revenue for this week
   #------------------DASHBOARD END-------------------------
   end
@@ -45,12 +46,10 @@ class PagesController < ApplicationController
     if user_signed_in?
       @player = current_user.player.nil? ? Player.new : current_user.player
       @player.user = current_user
-      if current_user.club.nil?
-      else
-      #elsif !current_user.is_player && current_user.club.name
-          @club = current_user.club
-          @fields = @club.fields
-        end
+    if current_user.club
+      @club = current_user.club
+      @fields = @club.fields
     end
+  end
   end
 end

@@ -15,7 +15,7 @@
     <% end %>
 
     <% if current_user == @club.user %>
-      <%= link_to 'destroy', club_path(@club), method: :delete %></p>
+      <%= link_to 'destroy', club_field_path(@field), method: :delete %></p>
     <% end %>
   </div>
 </div>
