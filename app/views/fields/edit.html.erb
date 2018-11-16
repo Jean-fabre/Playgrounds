@@ -3,7 +3,8 @@
 
 <%= simple_form_for [@club, @field] do |f| %>
   <%= f.input :field_type, collection: ["Tennis", "Squash", "Padel"] %>
-  <%= f.input :availability %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
   <%= f.input :price %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
