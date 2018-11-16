@@ -42,8 +42,8 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
     authorize @player
     @player.user = current_user
-    if @player.save!
-      redirect_to user_players_path(current_user)
+    if @player.save
+      redirect_to user_players_path(current_user), notice: 'User profile was successfully created!'
     else
       render :new
     end
