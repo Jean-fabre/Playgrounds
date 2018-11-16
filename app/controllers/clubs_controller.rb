@@ -7,7 +7,7 @@ class ClubsController < ApplicationController
       @clubs = @clubs.where("name ILIKE ?", "%#{params[:name]}%")
     end
 
-    if params[:address].present?
+    if params[:adress].present?
       @clubs = @clubs.where("address ILIKE ?", "%#{params[:adress]}%")
     end
 
