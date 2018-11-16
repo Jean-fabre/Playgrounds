@@ -1,0 +1,20 @@
+<h1><%= @conversation.subject %></h1>
+
+<% @conversation.receipts_for(current_user).each do |receipt| %>
+  <div>
+   <div><%= receipt.message.sender.name %> commented : </div>
+    <p><%= receipt.message.body %></p>
+  </div>
+<% end %>
+
+
+<%= form_tag conversation_messages_path(@conversation), method: :post do %>
+  <div>
+    <%= text_area_tag :body %>
+  </div>
+    <%= submit_tag 'Send', class: "btn btn-success"%>
+<% end %>
+
+<%= link_to 'destroy', conversation_path, method: :delete, class: "btn btn-danger" %></p>
+<%= link_to 'Back', conversations_path, class: "btn btn-primary" %></p>
+
