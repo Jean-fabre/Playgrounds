@@ -3,8 +3,10 @@
  <div class="col-xs col-lg">
   <p>Total bookings: <%= @upcoming_events.count  %></p>
   <p>Projected revenue: €<%= @total %></p>
+  <p>This week's revenue: €<%= @this_week_revenue  %></p>
+  <p>Revenue difference: <%= ((@this_week_revenue - @last_week_revenue)/((@this_week_revenue - @last_week_revenue)/2))*100  %>%
+  <p>Booking difference:  </p>
  </div>
-
 
 <div class="panel-group">
   <% @fields.each do |f| %>
@@ -24,7 +26,6 @@
         et = @next_event.end_date
         end %>
     <!----END STORING EVENTS FOR THIS FIELD--->
-
 
       <div class="panel dash-field-panel">
         <div class="panel-heading">

@@ -16,10 +16,24 @@ class PagesController < ApplicationController
     # total revenue for a club
     @total = 0
     @upcoming_events.each do |e|
-      field = Field.find(e.field_id)
-      @total += ((e.end_date.to_i - e.start_date.to_i) / 3600) * field.price.to_i
+      @field = Field.find(e.field_id)
+      @total += ((e.end_date.to_i - e.start_date.to_i) / 3600) * @field.price.to_i
     end
     # end total revenue for club
+    # revenue for this week
+    @this_week_revenue = 0
+    @last_week_revenue = 0
+    @fields.each do |f|
+      f.events.each do |e|
+        if e.start_date > DateTime.now - 7
+          @this_week_revenue += ((e.end_date.to_i - e.start_date.to_i) / 3600) * @field.price.to_i
+        elsif e.start_date < DateTime.now - 7 && e.start_date > DateTime.now - 14
+          @last_week_revenue += ((e.end_date.to_i - e.start_date.to_i) / 3600) * @field.price.to_i
+        end
+      end
+    end
+    # end revenue for this week
+
   end
 
   private
