@@ -150,46 +150,6 @@
 
 
 <% else %>
-<!---DASHBOARD FOR OWNER---->
-<h1>Dashboard for club</h1>
-<!--declaring needed varibles for dashboard-->
-<% if current_user.club.nil? %>
-<% else %>
-<% @club = current_user.club %>
-<% @fields = @club.fields %>
-<!--end declariation--->
-
-
-<div class="panel-group">
-<div class="col-xs-12 col-sm-4">
-<% @fields.each do |f| %>
-<% f.events.each do |e| %>
-<!----PANEL UNIT---->
-<div class="panel dash-field-panel">
-  <div class="panel-heading"><h2>field <%= f.id %></h2><%= f.field_type %></div>
-  <div class="panel-body">
-    <% t = e.start_date  %>
-    <% te = e.end_date %>
-    <p>next reservation: <%= t.hour  %>:<%= t.min  %> - <%= t.day %>/<%= t.month %>/<%= t.year%> </p>
-    <p>by: <%= e.user.email  %></p>
-    <p>for: <%= e = (((te - t)*24).to_i / 1800) %> minutes</p>
-    <p>fee: €<%= f.price * (e/60)  %></p>
-
-<button id="hide-calendar">Show Calendar</button>
-</div>
-<div id="calendar" data-target="<%= @events %>"></div>
-</div>
-<% end %>
-<% end %>
-<!----PANEL END----->
-
-
-
-</div>
-</div>
-
-
-<% end %>
-
-
+<!----WHEN USER IS A CLUBOWNER--->
+<%= render 'shared/dashboard' %>
 <% end %>
