@@ -16,27 +16,43 @@
     <% if user_signed_in? %>
       <!-- Links when user is a player -->
       <% if @user.is_player %>
-        <%= link_to "Browse Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Messages", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Find a partner", user_players_path(@user), class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "About", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% if current_user.player.first_name.nil? %>
+
+        <% else %>
+          <%= link_to "Browse Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Find a partner", user_players_path(@user), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "About", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <% end %>
         <!-- Avatar with dropdown menu -->
         <div class="navbar-wagon-item">
           <div class="dropdown">
-                <%= cl_image_tag current_user.player.photo, width: 300, height: 300, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              </li>
-              <li>
-                <%= link_to "#" do %>
-                  <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-                <% end %>
-              </li>
-            </ul>
+
+            <% if current_user.player.id.nil? %>
+              <div id="navbar-wagon-menu" class="avatar dropdown-toggle" style="width:40px" data-toggle="dropdown"><i class="fas fa-user-circle"></i></div>
+
+            <% else %>
+
+              <%= cl_image_tag current_user.player.photo, width: 300, height: 300, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+                <li>
+                  <%= link_to user_player_path(current_user, current_user.player) do %>
+                    <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                  <% end %>
+                </li>
+
+                <li>
+                  <%= link_to "#" do %>
+                    <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                  <% end %>
+                </li>
+              </ul>
+            <% end %>
           </div>
         </div>
 
@@ -47,15 +63,17 @@
           <%= link_to "Create your club", new_club_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
         <% elsif current_user.club %>
-          <%= link_to "*placeholder* Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "*placeholder* Add new field", new_club_field_path(current_user.club), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Add new field", new_club_field_path(current_user.club), class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "Your club", club_path(@club), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <% end %>
 
         <div class="navbar-wagon-item">
           <div class="dropdown">
             <% if current_user.club.nil? %>
               <!--DOES NOTHING--DONT REMOVE-->
+              <div id="navbar-wagon-menu" class="avatar dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user-plus"></i></div>
             <% else %>
               <%= cl_image_tag current_user.club.photo, width: 300, height: 300, crop: :thumb, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% end %>

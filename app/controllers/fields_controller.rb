@@ -28,6 +28,7 @@ class FieldsController < ApplicationController
   def create
     @club = Club.find(params[:club_id])
     @field = Field.new(field_params)
+    @field.club = @club
     authorize @field
     if @field.save
       redirect_to root_path

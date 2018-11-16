@@ -1,0 +1,56 @@
+<!---DASHBOARD FOR OWNER---->
+<h1>Dashboard for club</h1>
+<div class="panel">
+ <div class="col-xs col-lg">
+  <p>Total bookings: <%= @upcoming_events.count  %></p>
+  <p>Projected revenue: €<%= @total %></p>
+  <p>This week's revenue: €<%= @this_week_revenue  %></p>
+  <% if @last_week_revenue.nil? %>
+  <p>Revenue difference: <%= ((@this_week_revenue - @last_week_revenue)/((@this_week_revenue - @last_week_revenue)/2))*100  %>%</p>
+  <% end %>
+  <p>Booking difference:  </p>
+ </div>
+</div>
+<div class="panel-group">
+  <% @fields.each do |f| %>
+  <div class="col-xs-12 col-sm-4">
+    <!----PANEL UNIT---->
+    <!----STORING EVENTS FOR THIS FIELD----->
+      <% if f.events #Check if a field has events
+        @upcoming_events = []
+         f.events.each do |e|
+           if e.start_date > DateTime.now
+             @upcoming_events << e
+           end
+         end
+        @next_event = @upcoming_events.first
+        if @next_event #check if next is not nil
+        t = @next_event.start_date
+        et = @next_event.end_date
+        end %>
+    <!----END STORING EVENTS FOR THIS FIELD--->
+
+      <div class="panel dash-field-panel">
+        <div class="panel-heading">
+          <h2>field <%= f.id %></h2>
+          <%= f.field_type %></div>
+            <div class="panel-body">
+              <% if @next_event #check if next event is not nil %>
+              <p>next reservation: <%= t.hour %>:<%= t.min  %> - <%= t.day %>/<%= t.month %>/<%= t.year%> </p>
+              <p>by: <%= @next_event.user.email  %></p>
+              <p>for: <%= (et.to_i - t.to_i )/3600 %> hours
+              <p>fee: €<%= ((et.to_i - t.to_i )/3600)*f.price.to_i %></p>
+              <% else %>
+              <p>There are no upcoming reservations on this field yet</p>
+              <% end %>
+            <button id="hide-calendar">Show Calendar</button>
+          </div>
+        <div id="calendar" data-target="<%= @events %>"></div>
+        </div>
+      <!----PANEL END----->
+    </div>
+       <% end  %>
+  <% end %>
+</div>
+
+

@@ -1,5 +1,5 @@
 class Field < ApplicationRecord
-  has_one :club
+  belongs_to :club
   has_many :events
 
   has_many :availabilities
