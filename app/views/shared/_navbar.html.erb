@@ -22,7 +22,7 @@
           <%= link_to "Browse Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "Find a partner", user_players_path(@user), class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "About", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "Messages", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <% end %>
         <!-- Avatar with dropdown menu -->
         <div class="navbar-wagon-item">
@@ -57,9 +57,10 @@
           <%= link_to "Create your club", new_club_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
         <% elsif current_user.club %>
-          <%= link_to "*placeholder* Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "*placeholder* Add new field", new_club_field_path(current_user.club), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Add new field", new_club_field_path(current_user.club), class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "Your club", club_path(@club), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <% end %>
 
         <div class="navbar-wagon-item">
