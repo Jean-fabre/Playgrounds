@@ -49,7 +49,7 @@
   </div>
   <div class="panel-body">
       <% if @next_event #check if next event is not nil %>
-        <p>next reservation: <%= t.hour %>:<%= t.min  %><%= "0" if t.min == 0 %>- <%= t.day %>/<%= t.month %>/<%= t.year%> </p>
+        <p>next reservation: <%= t.hour %>:<%= t.min  %><%= "0" if t.min == 0 %> - <%= t.day %>/<%= t.month %>/<%= t.year%> </p>
         <p>by: <%= @next_event.user.email  %></p>
         <p>for: <%= (et.to_i - t.to_i )/3600 %> hours</p>
         <p>fee: €<%= ((et.to_i - t.to_i )/3600)*f.price.to_i %></p>
