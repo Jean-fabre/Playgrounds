@@ -6,7 +6,7 @@
           <% @conversation.receipts_for(current_user).each do |receipt| %>
             <div class="message">
               <div class="message-avatar">
-                <%= cl_image_tag receipt.message.sender.player.photo, crop: :thumb, gravity: :face, class: "avatar" %>
+                <%= cl_image_tag receipt.message.sender.player.photo, crop: :thumb, gravity: :face, class: "avatar-m" %>
               </div>
               <div class="message-name">
                 <%= receipt.message.sender.player.first_name %> <%= receipt.message.sender.player.last_name %>
