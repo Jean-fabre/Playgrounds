@@ -3,17 +3,7 @@ class FieldsController < ApplicationController
 
   def index
     @fields = Field.all
-    if params[:field_type].present?
-      @fields = @fields.where(field_type: params[:field_type])
-    end
-
-    if params[:price].present?
-      @fields = @fields.where(price: params[:price])
-    end
-
-    if params[:availability]
-    end
-
+    find_field
     policy_scope(Field)
   end
 
@@ -61,6 +51,25 @@ class FieldsController < ApplicationController
   @field.destroy
   redirect_to root_path
   end
+
+  def find_field
+    if params[:field_type].present?
+    @fields = @fields.where(field_type: params[:field_type])
+    end
+
+    if params[:club_address].present?
+    @fields = Field.where(field_type: params[:field_type]).global_search(params[:club_address])
+    end
+
+    if params[:start_date]
+
+    end
+
+    if params[:end_date]
+
+    end
+  end
+
 
   private
 

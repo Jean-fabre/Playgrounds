@@ -1,3 +1,33 @@
-.dash-field-panel{
+.card-description-dash {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.card-description-dash p {
+  font-size: 14px;
+  opacity: 1;
+  font-weight: bold;
+}
 
+.card-description-dash h2 {
+  font-size: 24px;
+}
+
+.card-dash {
+  height: 175px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+}
+.dash-title{
+  margin-left: 15px;
+}
+.centered_div {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

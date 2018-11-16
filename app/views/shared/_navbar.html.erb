@@ -16,6 +16,7 @@
     <% if user_signed_in? %>
       <!-- Links when user is a player -->
       <% if @user.is_player %>
+
         <% if current_user.player.first_name.nil? %>
 
         <% else %>

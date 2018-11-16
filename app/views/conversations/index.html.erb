@@ -1,7 +1,8 @@
+
 <div class="container" id="container_message">
   <div class="row">
     <div class="text-center">
-      <h1>Your messages</h1>
+      <h1>Your conversation</h1>
 
       <% @conversations.each do |c| %>
 
@@ -26,20 +27,5 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-<h1>All Conversations</h1>
-
-<% @conversations.each do |conversation| %>
-  <div>
-    <%= link_to conversation.subject, conversation_path(conversation), class: "btn btn-primary" %>
-  </div>
-<% end %>
 
 <%= link_to "New conversation", new_conversation_path, class: "btn btn-success"%>
