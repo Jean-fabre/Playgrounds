@@ -6,6 +6,8 @@
 @import "home";
 
 @import "map";
+@import "avatar";
+@import "message";
 
 
 .container{
@@ -13,6 +15,19 @@
   margin-bottom: 30px;
   margin-right: 150px;
   margin-left: 150px;
+}
+body {
+  margin: 0;
+  margin-bottom: 100px;
+  font-family: 'Varela Round', sans-serif;
+}
+.text-center {
+  text-align: center;
+}
+#container_message {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: auto;
 }
 
 .simple_form {

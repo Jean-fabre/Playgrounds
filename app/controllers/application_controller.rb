@@ -31,6 +31,9 @@ class ApplicationController < ActionController::Base
   def set_photo
     if current_user && current_user.player
       @photo = current_user.player
+    elsif current_user && current_user.club
+      @photo = current_user.club
+
     end
   end
 
