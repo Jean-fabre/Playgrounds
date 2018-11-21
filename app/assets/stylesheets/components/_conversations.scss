@@ -1,0 +1,40 @@
+.new_conversations_box
+{
+background-color: white;
+border-radius: 2%;
+color: black;
+
+}
+.inputs_conversations
+{
+width: 270px;
+margin-top: 13px;
+}
+.inputs_conversations_blank_input
+{
+width: 270px;
+margin-top: 13px;
+height: 130px;
+}
+.create_conversation
+{
+margin-bottom: 10px;
+}
+
+.input_message_conversations
+{
+width: 100%;
+}
+
+.input_message_conversations textarea {
+  width: 100%;
+  border-bottom-radius: 2%;
+}
+.conversation_title a
+{
+color: black;
+}
+.new_conversation_btn
+{
+margin-top: 8px;
+}

@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_one :club
   has_many :fields, through: :club
   has_many :events
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   def name
     "User #{id}"

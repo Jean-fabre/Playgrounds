@@ -1,41 +1,44 @@
-.message {
+.message_conversations {
   display: flex;
-  border-left: 1px solid grey;
-  border-bottom: 1px solid grey;
-  border-right: 1px solid grey;
-  border-top: 1px solid grey;
+  align-items: center;
   padding: 10px;
-  /* Your turn to design a flexbox message */
+  border-radius: 2px;
+  background: rgba(91, 155, 155, 0.8);
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 1);
+  color: white;
+  /* Your turn to design a flexbox message_conversations */
 }
-.message h3 {
-  font-size: 14px;
+.message_conversations h3 {
+  font-size: 15px;
   margin: 10px;
 }
-.message h6 {
+.message_conversations h6 {
   font-size: 12px;
   margin: 0px;
 }
-.message p {
-  text-align: center;
+.message_conversations p {
+  align-items: center;
+  justify-content: space-around;
   font-size: 12px;
   margin: 0px;
-  color: grey;
+  color: white;
 }
 
 .message-name {
-  text-align: center;
+  align-items: center;
   padding-left: 25px;
   flex: 0 0 200px;
   margin: 0px;
 }
 .message-content {
-  text-align: center;
-  flex: 1 0 545px;
+  align-items: center;
+  flex: 1 0 auto;
   padding-right: 5px;
   padding-left: 5px;
 }
 
 .message-status {
+  align-items: center;
   padding-right: 0px;
   flex: 0 0 200px;
 }
@@ -53,4 +56,15 @@
 }
 #declined {
   color: red;
+}
+
+.banner_conversations {
+  color: white;
+  text-align: center;
+  min-height: calc(100vh - 70px);
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }

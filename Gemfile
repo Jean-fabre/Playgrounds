@@ -8,12 +8,10 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.1'
 gem 'redis'
+gem 'jquery-rails'
 gem 'pg_search'
 gem 'mailboxer'
-
-
 gem "pundit"
-
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'
@@ -21,11 +19,10 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
-
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem "geocoder"
-
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'dotenv-rails', groups: [:development, :test]

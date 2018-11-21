@@ -53,6 +53,8 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap3-datetimepicker-rails (4.17.47)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.3)
     byebug (10.0.2)
     carrierwave (1.2.3)
@@ -250,6 +252,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootsnap
   bootstrap-sass (~> 3.3)
+  bootstrap3-datetimepicker-rails (~> 4.17.47)
   carrierwave (~> 1.2)
   cloudinary
   devise
@@ -258,6 +261,7 @@ DEPENDENCIES
   fullcalendar-rails
   geocoder
   jbuilder (~> 2.0)
+  jquery-rails
   listen (~> 3.0.5)
   mailboxer
   momentjs-rails

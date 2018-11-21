@@ -70,7 +70,6 @@ class FieldsController < ApplicationController
     end
   end
 
-
   private
 
   def field_params

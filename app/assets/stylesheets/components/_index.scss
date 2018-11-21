@@ -8,17 +8,32 @@
 @import "map";
 @import "avatar";
 @import "message";
+@import "search_bar";
+@import "review";
+@import "card_club_index";
 
 
-.container{
+.container {
   margin-top: 50px;
   margin-bottom: 30px;
-  margin-right: 150px;
-  margin-left: 150px;
+  margin-right: 50px;
+  margin-left: 50px;
 }
+
+.main-container {
+  background-image: url('ryan.jpg');
+  background-size: 100%;
+}
+
+.clubs-container {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+
 body {
   margin: 0;
-  margin-bottom: 100px;
+  margin-bottom: 0px;
   font-family: 'Varela Round', sans-serif;
 }
 .text-center {
@@ -39,3 +54,9 @@ body {
   box-shadow: 1px 1px 3px rgba(128, 128, 128, 0.8);
   background-color: white;
 }
+.item
+{
+height: calc(100vh - 70px);
+}
+
+

@@ -1,0 +1,186 @@
+<% if current_user.club %>
+<link rel="stylesheet" href="sidebar.css">
+<% end %>
+
+ <div class="page-wrapper chiller-theme toggled">
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+            <i class="fas fa-bars"></i>
+        </a>
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div class="sidebar-brand">
+                    <a href="#">Playgrounds - Club owner</a>
+                    <div id="close-sidebar">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="sidebar-header clubimage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @club.photo%>'); background-size: cover; height: 125px;">
+                    <div class="user-info">
+                        <span class="user-name">
+                            <strong><%= @club.name %></strong>
+                        </span>
+                        <span class="user-role">Administrator</span>
+                    </div>
+                </div>
+                <!-- sidebar-header  -->
+
+                <!-- sidebar-search  -->
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="header-menu">
+                            <span>Navigation</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-tachometer-alt"></i>
+                                <span>DASHBOARD</span>
+                                <span class="badge badge-pill badge-danger">New</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>FIELDS</span>
+                                <span class="badge badge-pill badge-primary"><%= @fields.count  %></span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Add a new field</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Fields</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>CALENDAR</span>
+                            </a>
+
+                        </li>
+
+                        <li class="header-menu">
+                            <span>Account</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-user-circle"></i>
+                                <span>Log-out</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-plus"></i>
+                                <span>Add a new field</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-list-ul"></i>
+                                <span>Browse clubs</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- sidebar-menu  -->
+            </div>
+            <!-- sidebar-content  -->
+        </nav>
+        <!-- sidebar-wrapper  -->
+           <script type="text/javascript"><!--
+          function ReplaceContentInContainer(id,content) {
+          var container = document.getElementById(id);
+          container.innerHTML = content;
+          }
+          //--></script>
+        <main class="page-content" id="dashrender">
+           <!-- page-wrapper -->
+
+
+            <!--DASHBOARD ITEM CARD-->
+                      <div class="container dashcontainer">
+                        <div class="row">
+                            <div class="col-md-3">
+                              <div class="card-item">
+                                  <i class="fas fa-dollar-sign ic a"></i>
+                                  <h1 class="title">€<%= @this_week_revenue  %></h1>
+                                  <p>WEEK REVENUE</p>
+                              </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card-item">
+                              <i class="fas fa-chart-bar ic b"></i>
+                              <% if @last_week_revenue != 0 %>
+                              <h1 class="title"><%= (@last_week_revenue - @this_week_revenue)/(@last_week_revenue *100)  %>%</h1>
+                              <% else %>
+                            <h1>No info available</h1>
+                              <% end %>
+                              <p>REVENUE DIFFERENCE</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card-item">
+                              <i class="fas fa-dollar-sign ic c"></i>
+                              <h1 class="title">€<%= @total %></h1>
+                              <p>PROJECTED REVENUE</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card-item">
+                              <i class="fas fa-user-plus ic d"></i>
+                              <h1 class="title"><%= @upcoming_events.count  %></h1>
+                              <p>TOTAL BOOKINGS</p>
+                          </div>
+                        </div>
+
+                        </div>
+                      </div>
+
+
+                      <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+                      <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
+            <!--*DASHBOAD CARDS ENDS-->
+            <div class="container">
+            <script>
+            window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+              animationEnabled: true,
+              theme: "light2",
+              title:{
+                text: "Weekly users"
+              },
+              axisY:{
+                includeZero: false
+              },
+              data: [{
+                type: "line",
+                dataPoints: [
+                  { y: <%= @week1.count %> },
+                  { y: <%= @week2.count %> },
+                  { y: <%= @week3.count %> },
+                  { y: <%= @week4.count %> },
+                  { y: <%= @week5.count %> },
+                  { y: <%= @week6.count %> },
+                  ]
+              }]
+            });
+            chart.render();
+
+            }
+            </script>
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+            </div>
+
+        </main>
+        <!-- page-content" -->
+    </div>

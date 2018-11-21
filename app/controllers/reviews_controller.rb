@@ -1,17 +1,19 @@
-class ReviewsController < ApplicationController
+ class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
     @club = Club.find(params[:club_id])
   end
 
   def show
+    @player = Player.find(parmas[:player_id])
+    @review = Review.find(params[:id])
   end
 
-  def new
-    @club = Club.find(params[:club_id])
-    @user = current_user
-    @review = Review.new
-  end
+  # def new
+  #   @club = Club.find(params[:club_id])
+  #   @user = current_user
+  #   @review = Review.new
+  # end
 
   def create
     @user = current_user
@@ -20,9 +22,9 @@ class ReviewsController < ApplicationController
     @review.club = @club
     @review.user = @user
     if @review.save
-      redirect_to root_path
+      redirect_to club_path(@club)
     else
-      render :new
+      render 'clubs/show'
     end
   end
 
@@ -33,6 +35,6 @@ class ReviewsController < ApplicationController
   private
 
   def reviews_params
-    params.require(:review).permit(:rating, :comment, :club_id, :user_id)
+    params.require(:review).permit(:rating, :comment, :club_id, :user_id, :player_id)
   end
 end

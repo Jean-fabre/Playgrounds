@@ -2,6 +2,7 @@ import "bootstrap";
 import $ from "jquery";
 import { fullcalendar } from "fullcalendar";
 
+
 $(function () {
 $('#calendar').fullCalendar({
   events: '/calendar_events',
@@ -13,17 +14,35 @@ $('#calendar').fullCalendar({
 });
 })
 
-
-
-
-function toggle_div_hide(id) {
-var divelement = document.getElementById(id);
-  console.log(divelement)
-  if(divelement.style.display == 'none') {
-    divelement.style.display = 'block';
-  }
-  else {
-    divelement.style.display = 'none'
-  }
+function sideBar() {
+  console.log('AM I REAL')
+  $(".sidebar-dropdown > a").click(function() {
+    $(".sidebar-submenu").slideUp(200);
+      if (
+        $(this)
+          .parent()
+          .hasClass("active")
+      ) {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this)
+          .parent()
+          .removeClass("active");
+      } else {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this)
+          .next(".sidebar-submenu")
+          .slideDown(200);
+        $(this)
+          .parent()
+          .addClass("active");
+        }
+      });
+  $("#close-sidebar").click(function() {
+    $(".page-wrapper").removeClass("toggled");
+  });
+  $("#show-sidebar").click(function() {
+    $(".page-wrapper").addClass("toggled");
+  });
 }
-document.getElementById('hide-calendar').addEventListener('click', function() { toggle_div_hide('calendar') })
+
+sideBar();

@@ -44,6 +44,7 @@ height: 60px;
 width: 200px;
 text-decoration: none;
 }
+
 .homebutton
 {
 display: flex;
@@ -60,9 +61,11 @@ display: flex;
 }
 .home_page_banner
 {
+  display: block;
 background-color: #2E8B57 !important;
 height: 60vh !important;
 }
+
 
 
 

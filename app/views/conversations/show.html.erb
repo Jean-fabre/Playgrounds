@@ -1,12 +1,17 @@
-<h1><%= @conversation.subject %></h1>
-  <div class="container" id="container_message">
+
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1520992048127-03c7e5176a4e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0448927799c929e8f4f25f1b2be1c76c&auto=format&fit=crop&w=1401&q=80');" >
+
     <div class="row">
+      <h2 class="text-center"><%= @conversation.subject %></h2>
       <div class="text-center">
+      <div class="row">
+        <div class="col-sm-12">
         <div class="inbox">
           <% @conversation.receipts_for(current_user).each do |receipt| %>
-            <div class="message">
+            <div class="message_conversations">
               <div class="message-avatar">
-                <%= cl_image_tag receipt.message.sender.player.photo, crop: :thumb, gravity: :face, class: "avatar-m" %>
+                <%= cl_image_tag receipt.message.sender.player.photo, width: 300, height: 300, crop: :thumb, gravity: :face, class: "avatar-m" %>
               </div>
               <div class="message-name">
                 <%= receipt.message.sender.player.first_name %> <%= receipt.message.sender.player.last_name %>
@@ -19,19 +24,24 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="text-center">
-      <%= form_tag conversation_messages_path(@conversation), method: :post do %>
-        <div>
-          <%= text_area_tag :body %>
-        </div>
-          <%= submit_tag 'Send', class: "btn btn-success"%>
-      <% end %>
+    <div class="col-xs-12" style="padding: 0px">
 
-      <%= link_to 'destroy', conversation_path, method: :delete, class: "btn btn-danger" %></p>
-      <%= link_to 'Back', conversations_path, class: "btn btn-primary" %></p>
+        <%= form_tag conversation_messages_path(@conversation), method: :post do %>
+          <div class="input_message_conversations" style="color: black">
+            <%= text_area_tag :body, "", placeholder: "Write your message to here" %>
+          </div>
+           <div class="col-xs-4">
+        <%= link_to 'destroy', conversation_path, method: :delete, class: "btn btn-danger" %></p>
+          </div>
+          <div class="col-xs-4">
+            <%= submit_tag 'Send', class: "btn btn-success"%>
+        <% end %>
+          </div>
+          <div class="col-xs-4">
+        <%= link_to 'Back', conversations_path, class: "btn btn-primary" %></p>
+          </div>
+      </div>
     </div>
   </div>
 </div>

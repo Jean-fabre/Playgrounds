@@ -1,32 +1,74 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-offset-3 col-sm-6">
+<%= content_for :title do  %>
+Players - Playgrounds
+<% end %>
 
-      <h1>Your profile</h1>
-      <ul>
-        <li>First name    : <%= @player.first_name %></li>
-        <li>Last name     :<%= @player.last_name %></li>
-        <li>Phone number  : <%= @player.phone_number %></li>
-        <li>Birth date    :<%= @player.birth_date %></li>
-        <li>Description   :<%= @player.description%></li>
-        <% if @player.tennis == true %>
-        <li>Plays tennis with current level :<%= @player.tennis_level %></li>
-        <%end %>
-        <% if @player.squash == true %>
-        <li>Plays squash with current level : <%= @player.squash_level %></li>
-        <%end %>
-        <% if @player.padel == true %>
-        <li>Plays padel with current level : <%= @player.padel_level %></li>
-        <%end %>
-      </ul>
-      <%= cl_image_tag @player.photo, height: 300, width: 400, crop: :fill, crop: :thumb, gravity: :face %>
+    <div class="profile-header-wrapper">
+      <div class="container profile-header-container text-center" style="margin-top: 0px, margin-left: auto, margin-right: auto">
+        <div class="profile-header-infos">
+          <%= cl_image_tag @player.photo,height: 200, width: 200, crop: :fill, crop: :thumb %>
+          <h1 class="text-capitalize"> <%= @player.first_name %></h1>
+          <h2 class="text-capitalize"> <%= @player.last_name %></</h2>
+          <h3><%= @player.phone_number %></h3>
+          <h3><%= @player.birth_date %></h3>
 
-      <% if policy(@player).edit? %>
-        <%= link_to "Update", edit_user_player_path(current_user, @player), class: "btn btn-primary" %>
-      <% end %>
+          <div class="social_network_links">
+          <i class="fab fa-instagram"></i><i class="fab fa-facebook-square"></i><i class="fab fa-twitter"></i>
+        </div>
 
+          <%= link_to 'Send a Message',new_conversation_path(@conversations), class: "btn btn-success" %>
+
+        </div>
+        <div class="tabs">
+          <div class="tab">
+            <% if @player.tennis == true %>
+            <p><strong>Tennis level</strong> : <%= @player.tennis_level %></p>
+            <%end %>
+          </div>
+          <div class="tab">
+            <% if @player.squash == true %>
+            <p><strong>Squash level</strong> : <%= @player.squash_level %></p>
+            <% end %>
+          </div>
+          <div class="tab">
+            <% if @player.padel == true %>
+            <p><strong>Padel level</strong> : <%= @player.padel_level %></p>
+            <%end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="banner text-center" style="color: black; height: 140px">
+  <h3> "<%= @player.description %>"</h3>
+  </div>
+  <div id="cacaowebchromeextension"></div>
+  <script type="text/javascript">var Cacaoweb = { callbackIsRunning: function () { var cacaodiv = document.createElement("div"); cacaodiv.id = "cacaorunning"; document.body.appendChild(cacaodiv); } };</script>
+  <script id="isrunning" src="http://127.0.0.1:4001/isrunning" type="text/javascript"></script>
+  <div class="text-center" style="margin-bottom: 15px">
+  <% if policy(@player).edit? %>
+  <%= link_to "Update", edit_user_player_path(current_user, @player), class: "btn btn-primary profile_button_update" %>
+  <% end %>
+  <%= link_to "Back to partners", user_players_path(current_user), class: "btn btn-primary profile_button_update"%>
+  </div>
+    <div class="profile-header-wrapper-reservations">
+      <div class="container profile-header-container text-center" style="margin-top: 0px">
+        <div class="profile-header-infos">
+        <div class="row">
+          <h1> Bookings </h1>
+          <% @events.each do |e| %>
+          <div class="col-xs-12 col-sm-4">
+            <div class="card reservations_cards" style="padding-top: 40px">
+              <p class="player_profile_reservations_cards text-uppercase"><%= e.title  %></p>
+              <p class="player_profile_reservations_cards"><%= e.start_date %></p>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+
+
+
+
 
 

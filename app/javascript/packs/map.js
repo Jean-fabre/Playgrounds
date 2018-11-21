@@ -48,6 +48,8 @@ if (mapElement) { // only build a map if there's a div#map to inject into
 
 
 
+
+
 // const addressInput = document.getElementById('club_address');
 
 // if (addressInput) { const places = require('places.js'); const placesAutocomplete = places({ container: addressInput }); }

@@ -10,6 +10,10 @@ class PlayersController < ApplicationController
       @players = @players.where(last_name: params[:last_name])
     end
 
+    if params[:gender].present?
+      @players = @players.where(gender: params[:gender])
+    end
+
     if params[:tennis_level].present?
       @players = @players.where(tennis_level: params[:tennis_level])
     end
@@ -26,17 +30,17 @@ class PlayersController < ApplicationController
   end
 
   def new
-      @user = current_user
-      @clubs = Club.all
-      @player = Player.new
-      authorize @player
+    @user = current_user
+    @clubs = Club.all
+    @player = Player.new
+    authorize @player
   end
 
   def show
     @player = Player.find(params[:id])
     authorize @player
+    @events = Event.all
   end
-
 
   def create
     @player = Player.new(player_params)

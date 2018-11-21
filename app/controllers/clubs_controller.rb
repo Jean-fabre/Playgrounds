@@ -3,18 +3,19 @@ class ClubsController < ApplicationController
   def index
     @clubs = Club.all
 
-    if params[:name].present?
-      @clubs = @clubs.where("name ILIKE ?", "%#{params[:name]}%")
-    end
-
-    if params[:adress].present?
-      @clubs = @clubs.where("address ILIKE ?", "%#{params[:adress]}%")
-    end
+    # @user = current_user
+    # @field = Field.find(params[:field_id])
+    # @event = Event.new(params[:id])
+    # @event.save
+    # @club = Club.find(params[:club_id])
+     @fields = Field.all
+    find_field
 
     @markers = @clubs.map do |club|
       {
         lng: club.longitude,
-        lat: club.latitude
+        lat: club.latitude,
+        infoWindow: { content: render_to_string(partial: "/clubs/map_box", locals: { club: club }) }
       }
     end
     policy_scope(Player)
@@ -27,12 +28,13 @@ class ClubsController < ApplicationController
 
   def show
     @club = Club.find(params[:id])
+    @review = Review.new
 
     @markers =
-      [{
-        lng: @club.longitude,
-        lat: @club.latitude
-      }]
+    [{
+      lng: @club.longitude,
+      lat: @club.latitude
+    }]
     authorize @club
   end
 
@@ -69,6 +71,40 @@ class ClubsController < ApplicationController
   private
 
   def club_params
-    params.require(:club).permit(:name, :address, :photo)
+    params.require(:club).permit(:name, :address, :city, :photo, :club_id)
+  end
+
+  def find_field
+    if params[:field_type].present? && !params[:field_type].blank?
+      @fields1 = @fields.where(field_type: params[:field_type])
+      @fields = @fields1.map{|f| f}
+    end
+     p params[:name].present?
+     p params[:name].blank?
+    if params[:name].present? && !params[:name].blank?
+      @clubs1 = @clubs.where("name ILIKE ?", "%#{params[:name]}%")
+      @clubs1_fields = @clubs1.map {|c| c.fields }
+      p "clubs field 1"
+      p @clubs1_fields.flatten
+      p "fields found bt rype"
+      p @fields
+      p "juncion "
+      p @fields && @clubs1_fields
+      @fields.nil? ? @fields = @clubs1_fields : @fields = @fields && @clubs1_fields
+      p @clubs1_fields
+      p @fields
+    end
+
+    if params[:city].present? && !params[:city].blank?
+      @clubs2 = @clubs.where("city ILIKE ?", "%#{params[:city]}%")
+      @clubs2_fields = @clubs2.map {|c| c.fields }
+      @fields.nil? ? @fields = @clubs2_fields : @fields = @fields && @clubs2_fields
+
+    end
+    @fields = @fields.flatten unless @fields
+
+    p @clubs1
+    p @clubs2
   end
 end
+

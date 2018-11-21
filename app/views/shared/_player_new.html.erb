@@ -1,58 +1,59 @@
-<div class="container">
-    <div class="row">
-      <div class="text-center">
-          <h1> Please complete your profile : </h1>
-              <%= simple_form_for [current_user, @player], html: { class: "profile-player" } do |f| %>
-              <div class="col-xs-12 col-sm-6" style="padding: 0px">
-                <%= f.input :first_name %>
-              </div>
-              <div class="col-xs-12 col-sm-6" style="padding-right: 0px">
-                <%= f.input :last_name %>
-              </div>
-              <div class="col-xs-12 col-sm-6" style="padding: 0px">
-                <%= f.input :phone_number %>
-              </div>
-              <div class="col-xs-12 col-sm-6" style="padding-right: 0px">
-                <%= f.input :gender, collection: ["Female", "Male"] %>
-              </div>
-                <%= f.input :birth_date, collusion: (1920..2018) %>
-                <%= f.input :description %>
-              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
-                <%= f.input :tennis %>
-              </div>
-              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
-                <%= f.input :padel %>
-              </div>
-              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
-                <%= f.input :squash %>
-              </div>
-              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
-                <%= f.input :tennis_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-              </div>
-              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
-                <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-              </div>
-              <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
-                <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
-              </div>
-                <%= f.input :photo %>
-              <div class="text-center">
-                <%= f.input :photo_cache, as: :hidden %>
-              </div>
-                <% if current_user.player.first_name %>
-                  <%= render "shared/popupplayer" %>
-                    <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  Complete your profile
-                  </button>
-                <% else %>
-              <div class="text-center">
-                  <%= f.submit %>
-              </div>
-                <% end %>
-             </div>
-            <% end %>
+
+  <div class="back_player_profile" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://squashmad.com/wp-content/uploads/2017/11/3-Saurav-Ghosal-IND-beat-3-1-Joel-Makin-WAL-_-11-6-11-8-6-11-11-2-_-59-mins_4.jpg');" >
+      <div class="row">
+        <div class="text-center">
+            <h1 class="form-player"> Please complete your profile : </h1>
+                <%= simple_form_for [current_user, @player], html: { class: "profile-player" } do |f| %>
+                <div class="col-xs-12 col-sm-6" style="padding: 0px">
+                  <%= f.input :first_name %>
+                </div>
+                <div class="col-xs-12 col-sm-6" style="padding-right: 0px">
+                  <%= f.input :last_name %>
+                </div>
+                <div class="col-xs-12 col-sm-6" style="padding: 0px">
+                  <%= f.input :phone_number %>
+                </div>
+                <div class="col-xs-12 col-sm-6" style="padding-right: 0px">
+                  <%= f.input :gender, collection: ["Female", "Male"] %>
+                </div>
+                  <%= f.input :birth_date, collusion: (1920..2018) %>
+                  <%= f.input :description %>
+                <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                  <%= f.input :tennis %>
+                </div>
+                <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                  <%= f.input :padel %>
+                </div>
+                <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                  <%= f.input :squash %>
+                </div>
+                <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                  <%= f.input :tennis_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+                </div>
+                <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                  <%= f.input :padel_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+                </div>
+                <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
+                  <%= f.input :squash_level, collection: ["Beginner", "Intermediate", "Advanced", "Expert"] %>
+                </div>
+                  <%= f.input :photo %>
+                <div class="text-center">
+                  <%= f.input :photo_cache, as: :hidden %>
+                </div>
+                  <% if current_user.player.first_name %>
+                    <%= render "shared/popupplayer" %>
+                      <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Complete your profile
+                    </button>
+                  <% else %>
+                <div class="text-center">
+                    <%= f.submit %>
+                </div>
+                  <% end %>
+               </div>
+              <% end %>
+        </div>
       </div>
-    </div>
-  </div>
+
 

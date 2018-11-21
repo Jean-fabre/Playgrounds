@@ -1,4 +1,6 @@
-
+<%= content_for :title do  %>
+Playgrounds
+<% end %>
 <% if !user_signed_in?  %>
 
   <%= content_for :title do  %>
@@ -13,23 +15,27 @@
     </div>
 
     <div class="banner home_page_banner">
-      <div class="row home_row">
+      <div class="" style="padding-bottom: 50px; padding-top: 30px">
+      <h2>We offer three sport experiences</h2>
+      <h5><em>"You can spend more time playing and less time organizing"</em></h5>
+    </div>
+      <div class="row home_row ">
         <div class="col-xs-12 col-sm-4">
-          <div class="card">
+          <div class="card card_home_page">
             <p>Play Tennis</p>
-            <img src="https://img.icons8.com/ios/50/000000/tennis.png">
+            <img src="tennis.png">
           </div>
         </div>
         <div class="col-xs-12 col-sm-4">
-          <div class="card">
-            <p>Play squash</p>
-            <img src="https://img.icons8.com/ios/50/000000/squash-racquet.png">
+          <div class="card card_home_page">
+            <p>Play Squash</p>
+            <img src="squash-racquet.png">
           </div>
         </div>
         <div class="col-xs-12 col-sm-4">
-          <div class="card">
+          <div class="card card_home_page">
             <p>Play padel<p>
-            <img src="https://img.icons8.com/ios/50/000000/tennis-filled.png">
+            <img src="tennis-filled.png">
           </div>
         </div>
       </div>
@@ -53,27 +59,34 @@
   </div>
 
   <div class="banner home_page_banner">
+    <div class="" style="padding-bottom: 50px; padding-top: 30px">
+      <h2>We offer three sport experiences</h2>
+      <h5><em>"You can spend more time playing and less time organizing"</em></h5>
+    </div>
     <div class="row home_row">
-      <div class="col-xs-12 col-sm-4">
-        <div class="card">
-          <p>Play Tennis</p>
-          <img src="https://img.icons8.com/ios/50/000000/tennis.png">
+      <div class="col-xs-12 col-md-4">
+        <div class="card_home_page card_home_hover">
+          <p>Play tennis</p>
+          <img src="tennis.png">
         </div>
       </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card">
+      <div class="col-xs-12 col-md-4">
+        <div class="card_home_page card_home_hover">
           <p>Play squash</p>
-          <img src="https://img.icons8.com/ios/50/000000/squash-racquet.png">
+          <img src="squash-racquet.png">
         </div>
       </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card">
+      <div class="col-xs-12 col-md-4">
+        <div class="card_home_page card_home_hover">
           <p>Play padel<p>
-          <img src="https://img.icons8.com/ios/50/000000/tennis-filled.png">
+          <img src="tennis-filled.png">
         </div>
       </div>
     </div>
   </div>
+
+
+
 
 
 <script>$('.carousel').carousel();</script>
@@ -84,6 +97,10 @@
 <% elsif current_user.club  %>
 <!----WHEN USER IS A CLUBOWNER--->
 <%= render 'shared/dashboard' %>
+
+
+<% else %>
+<%= render 'shared/home_page_club' %>
 
 
 <% end %>

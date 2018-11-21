@@ -1,47 +1,74 @@
-<div class="container">
 
-  <h1>CLUBS/SHOW</h1>
 
-  <p id="notice"><%= notice %></p>
+<%= content_for :title do  %>
+Clubs - Playgrounds
+<% end %>
 
-  <p><strong>About this Club</strong></p>
-  <ul>
-    <strong><%= @club.name %></strong>
-    <li><%= @club.address %></li>
+<div class="container-club-show">
+    <div class="club-image" style="background-image: url(<%= cl_image_path @club.photo.url%>); height: 100vh">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card-club-description-v2">
+          <h1><strong><%= @club.name.capitalize %></strong></h1>
+          <% if @club.reviews.count > 0 %>
+          <% a = [] %>
+          <% @club.reviews.each do |r|  %>
+          <%  a << r.rating %>
+          <% end %>
 
-    <% if @club.reviews.count > 0 %>
-      <% a = [] %>
-      <% @club.reviews.each do |r|  %>
-        <%  a << r.rating %>
-      <% end %>
-    <%= link_to club_reviews_path(@club) do %>
-      <li>average rating:</li>
-      <% b = a.inject{ |sum, el| sum + el } / a.size %>
-        <% b.times do %>
+          Average rating:
+          <% b = a.inject{ |sum, el| sum + el } / a.size %>
+          <% b.times do %>
           <i class="fas fa-star"></i>
-        <% end %>
-      <% end %>
-    <% end %>
-  </ul>
+          <% end %>
 
-  <% if current_user == @club.user  %>
-    <%= cl_image_tag @club.photo, height: 300, width: 400, crop: :fill %>
-    <% end %>
+          <% end %>
+          <p> Adress : <%= @club.address %></p>
+          <p> Number of tennis fields : <%= @club.fields.count %></p>
 
-  <div
-  id="map"
-  style="width: 50%;
-  height: 400px;"
-  data-markers="<%= @markers.to_json %>"
-  ></div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <div class="review-index-v2">
+          <h3><%= @club.name.capitalize %> has <%= pluralize @club.reviews.size, "review" %></h3>
+            <% if @club.reviews.blank? %>
+              Be the first to leave a review for <%= @club.name %>
+            <% else %>
+
+            <% @club.reviews.each do |review| %>
+              <%= render 'reviews/show', review: review %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-12">
+
+        <div class="review-v2">
+          <%= render 'reviews/form', club: @club, review: @review %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+
+
+
+  <%= link_to "Edit", edit_club_path(@club),class: "btn btn-primary" %>
+  <%= link_to "fields", club_fields_path(@club), class: "btn btn-primary" %>
+  <%= link_to "Back", clubs_path, class: "btn btn-primary" %>
 
 
 </div>
 
- <div>
-    <%= link_to "fields", club_fields_path(@club), class: "btn btn-primary" %>
-    <%= link_to "Back", clubs_path, class: "btn btn-primary" %>
-  </div>
+
+
+
+
+
+
+
+
 
 
 

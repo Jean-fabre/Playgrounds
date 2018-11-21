@@ -1,11 +1,29 @@
+<%= content_for :title do  %>
+Reservations - Playgrounds
+<% end %>
+
 <div class="centered_div">
 <h1>RESERVATIONS/NEW</h1>
 </div>
+
   <%= simple_form_for [@club, @field, @event] do |f| %>
-        <%= f.input :title %>
+        <p>When are you playing.
+          <%= datetime_local_field_tag :start_date,
+          params[:start_date],
+          class: "form-control",
+          placeholder: "When?"
+        %></p>
+        <p>Untill
+          <%= datetime_local_field_tag :end_date,
+          params[:end_date],
+          class: "form-control",
+          placeholder: "When?"
+        %></p>
+
         <%= f.input :description %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
+
         <%= f.submit "New reservation", class: 'btn btn-primary' %>
       <% end %>
 </div>
+
+

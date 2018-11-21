@@ -1,5 +1,113 @@
 .profile-player {
   max-width: 650px !important;
+  margin-bottom: 70px;
 }
 
+.form-player {
+  color: white;
+}
+.back_player_profile{
+background-size: cover;
+}
+
+.avatar {
+  width: 30px;
+  border-radius: 50%;
+}
+.avatar-bordered {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+}
+.avatar-large {
+  width: 50px;
+}
+
+.profile-header-wrapper {
+  background: #436175;
+}
+.profile-header-container img {
+  width: 200px;
+  border-radius: 50%;
+}
+.profile-header-container h1 {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+.profile-header-container h2 {
+  color: white;
+  opacity: 0.4;
+  font-size: 18px;
+  font-weight: lighter;
+  margin-bottom: 0;
+  letter-spacing: -1px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.profile-header-container{
+margin-left: auto;
+margin-right: auto;
+margin-top: 0px;
+}
+
+.profile-header-infos {
+  padding: 20px 0;
+}
+
+.tabs {
+  background: #436175;
+  display: flex;
+  padding: 10px 10px 0 10px
+}
+
+.tabs h3 {
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 0;
+}
+.tabs p {
+  opacity: 0.5;
+  margin-bottom: 0;
+}
+.tab {
+  background: #324856;
+  text-align: center;
+  flex: 10%;
+  padding: 15px 0;
+  color: white;
+}
+.tab:first-child {
+  border-radius: 10px 0 0 0;
+}
+.tab:last-child {
+  border-radius: 0 10px 0 0;
+}
+.profile_button_update
+{
+margin-right: 20px !important;
+width: 200px;
+}
+.profile-header-wrapper-reservations
+{
+background-color: #2E8B57 !important;
+height: 60vh !important;
+margin-bottom: 0px;
+}
+.player_profile_reservations_cards
+{
+color: black !important;
+}
+.social_network_links i {
+margin-right: 10px;
+}
+.reservations_cards:hover {
+background-color: #FFFAFA !important;
+opacity: 0.5 !important;
+}
+.banner_find_player{
+  min-height: calc(100vh - 70px);
+  background-size: cover !important;
+  width: 100%;
+}
 

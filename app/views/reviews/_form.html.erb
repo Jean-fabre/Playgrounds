@@ -1,0 +1,9 @@
+<%= content_for :title do  %>
+Reviews - Playgrounds
+<% end %>
+
+<%= simple_form_for([ club, review ]) do |form| %>
+<%=form.input :comment  %>
+<%=form.input :rating, collection:["1", "2", "3", "4", "5"]  %>
+<%=form.button :submit, class: "btn btn-primary" %>
+<% end %>

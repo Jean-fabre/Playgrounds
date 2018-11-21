@@ -17,9 +17,7 @@
       <!-- Links when user is a player -->
       <% if @user.is_player %>
 
-        <% if current_user.player.first_name.nil? %>
-
-        <% else %>
+        <% unless current_user.player.nil? %>
           <%= link_to "Browse Clubs", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "Find a partner", user_players_path(@user), class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "About", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
@@ -28,8 +26,7 @@
         <!-- Avatar with dropdown menu -->
         <div class="navbar-wagon-item">
           <div class="dropdown">
-
-            <% if current_user.player.id.nil? %>
+            <% if current_user.player.nil? %>
               <div id="navbar-wagon-menu" class="avatar dropdown-toggle" style="width:40px" data-toggle="dropdown"><i class="fas fa-user-circle"></i></div>
 
             <% else %>
@@ -37,9 +34,12 @@
               <%= cl_image_tag current_user.player.photo, width: 300, height: 300, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
               <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
                 <li>
+                  <% if current_user.player.id  %>
                   <%= link_to user_player_path(current_user, current_user.player) do %>
                     <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                    <% end %>
                   <% end %>
+
                 </li>
 
                 <li>
@@ -80,11 +80,18 @@
             <% end %>
 
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <!----check if user has a club---->
+              <% unless current_user.club.nil? %>
               <li>
-                <%= link_to club_path(current_user) do %>
+            <% if !current_user.club.nil? %>
+
+                <%= link_to club_path(@club) do %>
                   <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
                 <% end %>
+                <% end %>
+
               </li>
+              <% end %>
               <li>
                 <%= link_to "#" do %>
                   <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
@@ -120,4 +127,3 @@
     </div>
   </div>
 </div>
-

@@ -10,6 +10,7 @@ class ConversationsController < ApplicationController
 
   def new
     @recipients = User.all - [current_user]
+    # @player = Player.find(:id)
   end
 
   def create

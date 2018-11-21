@@ -1,12 +1,21 @@
-<div class="container">
-<h1>Add your club</h1>
-<%= simple_form_for @club do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-<div class="text-center">
-  <%= f.submit "Create Club", class: "btn btn-primary"%>
-</div>
+<%= content_for :title do  %>
+Clubs - Playgrounds
 <% end %>
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1526889836072-dbb0f1dbce66?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b739c91b4610052b8c028ee3d740df0c&auto=format&fit=crop&w=751&q=80');">
+  <div class="new_user_club" style="color: black">
+    <div class="text-center" style="color: white">
+    <h2>Add your club</h2>
+    </div>
+    <%= simple_form_for @club do |f| %>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :city %>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
+    <div class="text-center">
+      <%= f.submit "Create Club", class: "btn btn-success"%>
+    </div>
+  </div>
+  <% end %>
 </div>

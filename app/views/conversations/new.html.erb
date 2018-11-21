@@ -1,17 +1,32 @@
-<h1>New conversation</h1>
-<%= form_tag conversations_path, method: :post do %>
 
-  <div>
-    <%= select_tag :user_id, options_from_collection_for_select(@recipients, :id, :name ) %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1520992048127-03c7e5176a4e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0448927799c929e8f4f25f1b2be1c76c&auto=format&fit=crop&w=1401&q=80');">
+  <div class="banner-content new_user new_conversations">
+    <h1 style="color: white">New conversation</h1>
+    <div class="sign_up text-center new_conversations_box">
+      <%= content_for :title do  %>
+      New message - Playgrounds
+      <% end %>
+      <%= form_tag conversations_path, method: :post do %>
+
+        <div>
+
+
+        <%= select_tag :user_id, options_from_collection_for_select(@recipients, :id, :email), class: "inputs_conversations"   %>
+
+
+        </div>
+
+
+        <div>
+          <%= text_field_tag :subject, nil, placeholder: "Subject", class: "inputs_conversations" %>
+        </div>
+
+        <div>
+          <%= text_area_tag :body, nil, placeholder: "Leave a comment", class: "inputs_conversations_blank_input" %>
+        </div>
+        <%= submit_tag 'Create new conversation', class: "btn btn-success create_conversation" %>
+
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <%= text_field_tag :subject, nil, placeholder: "Subject" %>
-  </div>
-
-  <div>
-    <%= text_area_tag :body, nil, placeholder: "Leave a comment " %>
-  </div>
-  <%= submit_tag 'Create new conversation', class: "btn btn-success" %>
-
-<% end %>
+</div>
