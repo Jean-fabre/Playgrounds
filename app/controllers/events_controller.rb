@@ -48,7 +48,7 @@ class EventsController < ApplicationController
     a = a.join(" ")
     @event.title = a
     if @event.save
-      redirect_to clubs_path
+      redirect_to user_player_path(current_user, current_user.player)
     else
       render :new
     end

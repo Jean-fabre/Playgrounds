@@ -113,11 +113,11 @@ section .section-title h1 {
 
 .frontside .card-player-index{
   height: 420px;
-  width: 380px;
+
 }
 .backside .card-player-index {
   height: 380px;
-  width: 380px;
+  width: 415px;
 }
 .backside .card-body-player-index a {
     font-size: 18px;
@@ -139,7 +139,14 @@ section .section-title h1 {
 .card-link-to-player{
   position: absolute;
   bottom: 10px;
-  left: 130px;
+  left: 10px;
+  text-align: center;
+  color: white !important;
+}
+.card-link-to-message {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   text-align: center;
   color: white !important;
 }
@@ -170,6 +177,8 @@ margin-bottom: 91px;
   margin-top: 20px;
   color: black;
   padding-top: 75px;
+  padding-right: 30px;
+  padding-left: 30px;
   margin-bottom: 45px;
 }
 .card-title {

@@ -126,7 +126,10 @@ Players - Playgrounds
                       </ul>
                     </div>
                     <div class="card-link-to-player text-center">
-                      <%= link_to "See player", user_player_path(current_user, p), class: 'btn btn-primary' %>
+                      <%= link_to "See player profile", user_player_path(current_user, p), class: 'btn btn-primary' %>
+                    </div>
+                    <div class="card-link-to-message">
+                      <%= link_to "Send a message", new_conversation_path, class: 'btn btn-primary' %>
                     </div>
                   </div>
                 </div>

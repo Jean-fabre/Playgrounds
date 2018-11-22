@@ -5,7 +5,7 @@ Players - Playgrounds
     <div class="profile-header-wrapper-new">
       <div class="container profile-header-container text-center" style="margin-top: 0px, margin-left: auto, margin-right: auto">
         <div class="profile-header-infos">
-          <%= cl_image_tag @player.photo,height: 200, width: 200, crop: :fill, crop: :thumb %>
+          <%= cl_image_tag @player.photo,height: 200, width: 200, crop: :fill, crop: :thumb, gravity: :face %>
           <h1 class="text-capitalize"> <%= @player.first_name %></h1>
           <h2 class="text-capitalize" style="font-size:24px; "> <%= @player.last_name %></</h2>
           <h3><%= @player.phone_number.first(4) %> <%= @player.phone_number[4..6] %> <%= @player.phone_number[7..9] %></h3>

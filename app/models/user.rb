@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :set_if_club
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,6 +15,16 @@ class User < ApplicationRecord
 
   def name
     "User #{id}"
+  end
+
+  def set_if_club
+    if is_player
+    self.is_player = false
+    self.save!
+    else
+    self.is_player = true
+    self.save!
+    end
   end
 
   def mailboxer_email(object)
