@@ -6,7 +6,11 @@
       <%= content_for :title do  %>
       New message - Playgrounds
       <% end %>
+
+
+
       <%= form_tag conversations_path, method: :post do %>
+
 
         <div>
 
@@ -24,7 +28,7 @@
         <div>
           <%= text_area_tag :body, nil, placeholder: "Leave a comment", class: "inputs_conversations_blank_input" %>
         </div>
-        <%= submit_tag 'Create new conversation', class: "btn btn-success create_conversation" %>
+        <%= submit_tag 'Create new conversation', class: "btn btn-primary create_conversation" %>
 
       <% end %>
     </div>

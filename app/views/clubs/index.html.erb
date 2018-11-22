@@ -1,43 +1,43 @@
 
 <%= content_for :title do  %>
-  Find your Playground
+Find your Playground
 <% end %>
 
-<div class="main-container">
+<div class="main-container" style="min-height: 1250px">
   <div class="container clubs-container">
     <div class="row">
       <div class="col-xs-12">
         <div class="club-form">
           <h1>Find your playground</h1>
           <%= form_tag clubs_path, method: :get do %>
-            <div class="search-club">
-              <div class="col-xs-12 col-md-3">
-                <p><%= select_tag :field_type,
-                  options_for_select(["Tennis", "Squash", "Padel"]),
-                  class: "form-control",
-                  prompt: "Field type" %>
-                </p>
-              </div>
-              <div class="col-xs-12 col-md-3">
-                <p><%= text_field_tag :city,
-                  params[:city],
-                  class: "form-control",
-                  placeholder: "City" %>
-                </p>
-              </div>
-              <div class="col-xs-12 col-md-3">
-                <p><%= text_field_tag :name,
-                  params[:name],
-                  class: "form-control",
-                  placeholder: "Club" %>
-                </p>
-              </div>
-              <div class="col-xs-12 col-md-3 search-bar-club" style="right: 0px;">
-                <p>
-                  <%= submit_tag 'Search', class: 'btn btn-primary' %>
-                </p>
-              </div>
+          <div class="search-club">
+            <div class="col-xs-12 col-md-3">
+              <p><%= select_tag :field_type,
+              options_for_select(["Tennis", "Squash", "Padel"]),
+              class: "form-control",
+                prompt: "Field type" %>
+              </p>
             </div>
+            <div class="col-xs-12 col-md-3">
+              <p><%= text_field_tag :city,
+              params[:city],
+              class: "form-control",
+                placeholder: "City" %>
+              </p>
+            </div>
+            <div class="col-xs-12 col-md-3">
+              <p><%= text_field_tag :name,
+              params[:name],
+              class: "form-control",
+                placeholder: "Club" %>
+              </p>
+            </div>
+            <div class="col-xs-12 col-md-3 search-bar-club" style="right: 0px;">
+              <p>
+                <%= submit_tag 'Search', class: 'btn btn-primary' %>
+              </p>
+            </div>
+          </div>
           <% end %>
         </div>
       </div>
@@ -47,71 +47,77 @@
         <div class="col-xs-12">
           <% @fields.each do |f| %>
 
-            <div class="club-card" >
-              <div class="card">
-                <div class="card-photo-club">
-                  <div class="card-photo-club2">
-                    <div class="card-photo-club3">
-                      <div class="card-photo-background-club" id="card-clubs-index" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path f.club.photo %>'); width: 100%; height: 100%;" >
-                      </div>
+          <div class="club-card" >
+            <div class="card">
+              <div class="card-photo-club">
+                <div class="card-photo-club2">
+                  <div class="card-photo-club3">
+                    <div class="card-photo-background-club" id="card-clubs-index" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path f.club.photo %>'); width: 100%; height: 100%;" >
                     </div>
                   </div>
                 </div>
-                <div class="card-content-club">
-                  <div class="card-category">
-                    <h4><%= f.user.club.name %></h4>
-                  </div>
-                  <div class="card-content-rating">
-                    <% ratings = f.club.reviews.map do |review| %>
-                        <% review.rating %>
-                      <% end %>
-                      <% if ratings == [] %>
-                        <p>No rating</p>
-                      <% else %>
-                        <% (ratings.sum/ratings.size).times do %>
-                          <i class="fas fa-star"></i>
-                        <% end %>
-                      <% end %>
-                  </div>
-
-                  <div class="field-sport">
-                    <% if f.field_type == "Tennis" %>
-                      <%= image_tag "tennis.jpeg", class: "card-sport" %>
-                    <%  elsif f.field_type == "Padel" %>
-                      <%= image_tag "padel3.jpg", class: "card-sport" %>
-                    <% else %>
-                      <%= image_tag "squash.jpg", class: "card-sport" %>
-                    <% end %>
-                  </div>
-
-                  <div class="card-content-city">
-                    City: <%= f.club.city %>
-                  </div>
-
-                  <div class="card-content-price">
-                    <p>Price: <%= f.price %> €</p>
-                  </div>
-                  <div class="card-content-address">
-                    <p>Address: <%= f.club.address %></p>
-                  </div>
-                  <button type="button" class="btn btn-primary corner-right-bottom" data-toggle="modal"  data-target="#exampleModal">
-                    Book your court
-                  </button>
-
-                  <%= render "shared/popupevent", club: f.club, field: f, event: Event.new %>
-                </div>
               </div>
+              <div class="card-content-club">
+                <div class="card-category ezpzfix">
+                  <h4><%= f.user.club.name %></h4>
+                </div>
+                <div class="card-content-rating">
+                  <% ratings = f.club.reviews.map do |review| %>
+                  <% review.rating %>
+                  <% end %>
+                  <% if ratings == [] %>
+                  <p>No rating</p>
+                  <% else %>
+                  <% (ratings.sum/ratings.size).times do %>
+                  <i class="fas fa-star" style="color: #007b5e;"></i>
+                  <% end %>
+                  <% end %>
+                </div>
 
+                <div class="field-sport">
+                  <% if f.field_type == "Tennis" %>
+                  <%= image_tag "tennis.jpeg", class: "card-sport" %>
+                  <%  elsif f.field_type == "Padel" %>
+                  <%= image_tag "padel3.jpg", class: "card-sport" %>
+                  <% else %>
+                  <%= image_tag "squash.jpg", class: "card-sport" %>
+                  <% end %>
+                </div>
 
+                <div class="card-content-address">
+                  <p>Address: <%= f.club.address %></p>
+                </div>
+                <div class="card-content-city">
+                  City: <%= f.club.city %>
+                </div>
+
+                <div class="card-content-price">
+                  <p>Price: <%= f.price %> € / h</p>
+                </div>
+
+                <button type="button" class="btn btn-primary corner-right-bottom" style="margin-right: 158px;" data-toggle="modal"  data-target="#exampleModal">
+
+                  add review
+                </button>
+                <%= render "shared/popupreview", club: f.club, review: Review.new %>
+                <button type="button" class="btn btn-primary corner-right-bottom"" data-toggle="modal"  data-target="#exampleModal">
+                  Book your court
+                </button>
+                <%= render "shared/popupevent", club: f.club, field: f, event: Event.new %>
+
+              </div>
             </div>
+
+
+          </div>
           <% end %>
         </div>
       </div>
     </div>
   </div>
   <div
-    id="map" class="clubs-index"
-    data-markers="<%= @markers.to_json %>"
-    data-spy="affix" data-offset-top="197"
+  id="map" class="clubs-index"
+  data-markers="<%= @markers.to_json %>"
+  data-spy="affix" data-offset-top="197"
   ></div>
 </div>

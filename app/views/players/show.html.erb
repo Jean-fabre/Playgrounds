@@ -7,15 +7,15 @@ Players - Playgrounds
         <div class="profile-header-infos">
           <%= cl_image_tag @player.photo,height: 200, width: 200, crop: :fill, crop: :thumb %>
           <h1 class="text-capitalize"> <%= @player.first_name %></h1>
-          <h2 class="text-capitalize"> <%= @player.last_name %></</h2>
-          <h3><%= @player.phone_number %></h3>
-          <h3><%= @player.birth_date %></h3>
+          <h2 class="text-capitalize" style="font-size:24px; "> <%= @player.last_name %></</h2>
+          <h3><%= @player.phone_number.first(4) %> <%= @player.phone_number[4..6] %> <%= @player.phone_number[7..9] %></h3>
+          <h3><%= @player.birth_date.day %>-<%= @player.birth_date.month %>-<%= @player.birth_date.year %></h3>
 
           <div class="social_network_links">
           <i class="fab fa-instagram"></i><i class="fab fa-facebook-square"></i><i class="fab fa-twitter"></i>
         </div>
 
-          <%= link_to 'Send a Message',new_conversation_path(@conversations), class: "btn btn-success send_message_profile" %>
+          <%= link_to 'Send a Message',new_conversation_path(@conversations), class: "btn btn-primary send_message_profile" %>
 
         </div>
         <div class="tabs">
@@ -47,20 +47,29 @@ Players - Playgrounds
   <% if policy(@player).edit? %>
   <%= link_to "Update", edit_user_player_path(current_user, @player), class: "btn btn-primary profile_button_update" %>
   <% end %>
-  <%= link_to "Back to partners", user_players_path(current_user), class: "btn btn-primary profile_button_update"%>
+  <%= link_to "Back to opponents", user_players_path(current_user), class: "btn btn-primary profile_button_update"%>
   </div>
     <div class="profile-header-wrapper-reservations">
       <div class="container profile-header-container text-center" style="margin-top: 0px">
         <div class="profile-header-infos">
         <div class="row">
+          <% if current_user.events[0].nil? %>
+            <h1>You have no reservations yet!</h1>
+            <%= link_to clubs_path do %>
+              <p> Go to Fields</p>
+            <% end %>
+          <% else %>
           <h1> Bookings </h1>
-          <% @events.each do |e| %>
+          <% current_user.events.each do |e| %>
           <div class="col-xs-12 col-sm-4">
             <div class="card reservations_cards" style="padding-top: 40px">
               <p class="player_profile_reservations_cards text-uppercase"><%= e.title  %></p>
-              <p class="player_profile_reservations_cards"><%= e.start_date %></p>
+              <p class="player_profile_reservations_cards">date: <%= e.start_date.month %>-<%= e.start_date.day %> | <%= e.start_date.hour %>:<%= e.start_date.min %> </p>
+
+              <p class="player_profile_reservations_cards">@ <%= e.field.club.name %> | Field nr: <%=e.field.id  %></p>
             </div>
           </div>
+          <% end %>
           <% end %>
         </div>
       </div>

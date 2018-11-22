@@ -1,13 +1,29 @@
 .message_conversations {
   display: flex;
   align-items: center;
-  padding: 10px;
-  border-radius: 2px;
-  background: rgba(91, 155, 155, 0.8);
-  box-shadow: 0 0px 20px rgba(0, 0, 0, 1);
-  color: white;
+  padding: 5px;
+  border-radius: 48px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 1);
+  margin: 8px;
+  opacity: 1;
+  height: 85px;
   /* Your turn to design a flexbox message_conversations */
 }
+
+.message-width {
+  background-color: white;
+  border-radius: 20px;
+  opacity: 0.85;
+  min-width: 40%;
+  margin: 25px;
+
+}
+
+.title-message {
+  color: black;
+}
+
+
 .message_conversations h3 {
   font-size: 15px;
   margin: 10px;
@@ -19,23 +35,32 @@
 .message_conversations p {
   align-items: center;
   justify-content: space-around;
-  font-size: 12px;
+  font-size: 17px;
   margin: 0px;
-  color: white;
+  color: black;
 }
 
 .message-name {
   align-items: center;
   padding-left: 25px;
   flex: 0 0 200px;
-  margin: 0px;
+  margin: -56px;
+  opacity: 0.5;
 }
 .message-content {
   align-items: center;
   flex: 1 0 auto;
   padding-right: 5px;
   padding-left: 5px;
+  color: black;
 }
+
+.message-content p {
+  font-size: 17px;
+  font-weight: bold;
+  opacity: 1;
+}
+
 
 .message-status {
   align-items: center;

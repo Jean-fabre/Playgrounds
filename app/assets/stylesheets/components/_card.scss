@@ -108,7 +108,7 @@ background-color: #D0D0D0;
  height: 175px;
   background-size: cover !important;
   background-position: center;
-  color: black;
+  color: white;
   position: relative;
   margin-bottom: 20px;
   box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.4);
@@ -116,7 +116,7 @@ background-color: #D0D0D0;
   margin-right: 40px;
   margin-left: 40px;
   text-align: center;
-  background-color: #2E8B57 !important;
+  background-color: #007b5e !important;
 }
 .card_home_page:hover {
   opacity: 5;
@@ -127,3 +127,6 @@ background-color: #D0D0D0;
 border-radius: 3%;
 }
 
+.ezpzfix{
+  top: -3px;
+}

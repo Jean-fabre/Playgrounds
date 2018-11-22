@@ -12,18 +12,12 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for [club, field, event] do |f| %>
-          <p>When are you playing.
-            <%= f.datetime_local_field :start_date,{
-            class: "form-control",
-            placeholder: "When?" }
-          %></p>
-          <p>Untill
-            <%= f.datetime_local_field :end_date,{
-            class: "form-control",
-            placeholder: "When?"}
-          %></p>
-
-          <%= f.input :description %>
+          <p>
+            <%= f.input :start_date, as: :datetime, start_year: Date.today.year,
+              end_year: Date.today.year + 1,
+              order: [:hour, :minute,:day, :month, :year], label: "When would you like to play?" %></p>
+          <p><%= f.input :end_date, as: :datetime, order: [:hour, :minute], label: "Untill" %>
+            <%= f.input :description, label: "Special requests"%></p>
 
           <%= f.submit "Complete your reservation", class: 'btn btn-primary' %>
         <% end %>

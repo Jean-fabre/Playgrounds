@@ -2,13 +2,12 @@ class ClubsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @clubs = Club.all
-
     # @user = current_user
     # @field = Field.find(params[:field_id])
     # @event = Event.new(params[:id])
     # @event.save
     # @club = Club.find(params[:club_id])
-     @fields = Field.all
+    @fields = Field.all
     find_field
 
     @markers = @clubs.map do |club|

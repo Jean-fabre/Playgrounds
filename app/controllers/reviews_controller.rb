@@ -9,11 +9,11 @@
     @review = Review.find(params[:id])
   end
 
-  # def new
-  #   @club = Club.find(params[:club_id])
-  #   @user = current_user
-  #   @review = Review.new
-  # end
+  def new
+     @club = Club.find(params[:club_id])
+     @user = current_user
+     @review = Review.new
+  end
 
   def create
     @user = current_user
@@ -22,7 +22,7 @@
     @review.club = @club
     @review.user = @user
     if @review.save
-      redirect_to club_path(@club)
+      redirect_to clubs_path
     else
       render 'clubs/show'
     end

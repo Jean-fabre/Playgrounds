@@ -4,7 +4,12 @@ background-color: white;
 border-radius: 2%;
 color: black;
 
+opacity: 0.85;
+
+
+
 }
+
 .inputs_conversations
 {
 width: 270px;
@@ -38,3 +43,26 @@ color: black;
 {
 margin-top: 8px;
 }
+
+
+.message-name h3 {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.message_conversations_2 {
+ display: flex;
+  align-items: center;
+  border-radius: 48px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 1);
+  margin: 8px;
+  opacity: 1;
+  background-color: white;
+  border-radius: 5px;
+  opacity: 0.75;
+  width: 75%;
+  margin-left: 145px;
+}
+

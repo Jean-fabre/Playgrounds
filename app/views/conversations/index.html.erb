@@ -8,12 +8,12 @@ Messages - Playgrounds
 <div class="container" id="container_message">
   <div class="row">
     <div class="text-center">
-      <h1>Your conversations</h1>
+      <h1>Messages</h1>
 
       <% @conversations.each do |c| %>
 
         <div class="inbox">
-          <div class="message_conversations">
+          <div class="message_conversations_2">
             <div class="message-avatar">
                 <%= cl_image_tag c.receipts_for(current_user).last.message.sender.player.photo, width: 300, height: 300, crop: :thumb, gravity: :face, class: "avatar-m" %>
             </div>
@@ -22,10 +22,7 @@ Messages - Playgrounds
               </h3>
             </div>
             <div class="message-content conversation_title">
-              <%= link_to c.subject, conversation_path(c) %>
-            </div>
-            <div class="message-status">
-              <h3><%= c.receipts_for(current_user).last.message.body %></h3>
+              Object : <%= link_to c.subject.capitalize, conversation_path(c) %>
             </div>
           </div>
         <% end %>

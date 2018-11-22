@@ -44,7 +44,9 @@ class EventsController < ApplicationController
     #authorize @event
     @event.user = current_user
     @event.field = @field
-    @event.title = current_user.player.first_name.to_s,  current_user.player.last_name.to_s
+    a = current_user.player.first_name, current_user.player.last_name
+    a = a.join(" ")
+    @event.title = a
     if @event.save
       redirect_to clubs_path
     else
