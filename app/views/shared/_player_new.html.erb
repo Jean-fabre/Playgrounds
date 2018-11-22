@@ -16,7 +16,9 @@
                 <div class="col-xs-12 col-sm-6" style="padding-right: 0px">
                   <%= f.input :gender, collection: ["Female", "Male"] %>
                 </div>
-                  <%= f.input :birth_date, collusion: (1920..2018) %>
+                <%= f.input :birth_date, as: :date, start_year: Date.today.year - 80,
+                              end_year: Date.today.year - 12,
+                              order: [:day, :month, :year] %>
                   <%= f.input :description %>
                 <div class="col-xs-12 col-sm-4 text-center" style="padding: 0px">
                   <%= f.input :tennis %>
