@@ -22,8 +22,8 @@ background-size: cover;
   width: 50px;
 }
 
-.profile-header-wrapper {
-  background: #436175;
+.profile-header-wrapper-new {
+  background: #4C8184;
 }
 .profile-header-container img {
   width: 200px;
@@ -56,7 +56,7 @@ margin-top: 0px;
 }
 
 .tabs {
-  background: #436175;
+  background: #4C8184;
   display: flex;
   padding: 10px 10px 0 10px
 }
@@ -71,7 +71,7 @@ margin-top: 0px;
   margin-bottom: 0;
 }
 .tab {
-  background: #324856;
+  background: #385E61;
   text-align: center;
   flex: 10%;
   padding: 15px 0;
@@ -90,7 +90,7 @@ width: 200px;
 }
 .profile-header-wrapper-reservations
 {
-background-color: #2E8B57 !important;
+background-color: #78C091 !important;
 height: 60vh !important;
 margin-bottom: 0px;
 }
@@ -110,4 +110,7 @@ opacity: 0.5 !important;
   background-size: cover !important;
   width: 100%;
 }
-
+.send_message_profile
+{
+margin-top: 15px;
+}

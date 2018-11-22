@@ -2,7 +2,7 @@
 Players - Playgrounds
 <% end %>
 
-    <div class="profile-header-wrapper">
+    <div class="profile-header-wrapper-new">
       <div class="container profile-header-container text-center" style="margin-top: 0px, margin-left: auto, margin-right: auto">
         <div class="profile-header-infos">
           <%= cl_image_tag @player.photo,height: 200, width: 200, crop: :fill, crop: :thumb %>
@@ -15,7 +15,7 @@ Players - Playgrounds
           <i class="fab fa-instagram"></i><i class="fab fa-facebook-square"></i><i class="fab fa-twitter"></i>
         </div>
 
-          <%= link_to 'Send a Message',new_conversation_path(@conversations), class: "btn btn-success" %>
+          <%= link_to 'Send a Message',new_conversation_path(@conversations), class: "btn btn-success send_message_profile" %>
 
         </div>
         <div class="tabs">
