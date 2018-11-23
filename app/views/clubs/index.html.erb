@@ -59,7 +59,7 @@ Find your Playground
               </div>
               <div class="card-content-club">
                 <div class="card-category ezpzfix">
-                  <h4><%= f.user.club.name %></h4>
+                  <h4><%= f.club.name %></h4>
                 </div>
                 <div class="card-content-rating">
                   <% ratings = f.club.reviews.map do |review| %>
@@ -95,12 +95,12 @@ Find your Playground
                   <p>Price: <%= f.price %> € / h</p>
                 </div>
 
-                <button type="button" class="btn btn-primary corner-right-bottom" style="margin-right: 158px;" data-toggle="modal"  data-target="#exampleModal2">
+                <button type="button" class="btn btn-primary corner-right-bottom" style="margin-right: 158px;" data-toggle="modal"  data-target="#exampleModal<%= f.club.id  %>">
 
                   add review
                 </button>
                 <%= render "shared/popupreview", club: f.club, review: Review.new %>
-                <button type="button" class="btn btn-primary corner-right-bottom"" data-toggle="modal"  data-target="#exampleModal">
+                <button type="button" class="btn btn-primary corner-right-bottom"" data-toggle="modal"  data-target="#exampleModalevent<%= f.id  %>">
                   Book your court
                 </button>
                 <%= render "shared/popupevent", club: f.club, field: f, event: Event.new %>

@@ -47,7 +47,7 @@ class ClubsController < ApplicationController
     authorize @club
     @club.user = current_user
     if @club.save
-      redirect_to club_path(@club)
+      redirect_to root_path
     else
       render :show
     end
