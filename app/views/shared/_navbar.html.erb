@@ -21,8 +21,9 @@
 
           <%= link_to "Browse Fields", clubs_path, class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "Find an opponent", user_players_path(@user), class: "navbar-wagon-item navbar-wagon-link" %>
-          <div class="navbar-wagon-item navbar-wagon-link" onclick="scrollWin(0, 1000)">About</div>
-
+          <%= link_to "About", club_path(1), class: "navbar-wagon-item navbar-wagon-link" %>
+<!--           <div class="navbar-wagon-item navbar-wagon-link" onclick="scrollWin(0, 1000)">About</div>
+ -->
           <%= link_to "Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <% end %>
         <!-- Avatar with dropdown menu -->
